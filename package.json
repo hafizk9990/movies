@@ -1,0 +1,27 @@
+{
+  "name": "movies-reviewing-site",
+  "version": "1.0.0",
+  "description": "Movies reviewing site in NodeJS",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Movies"
+  ],
+  "author": "Muhammad Uzair Afzal",
+  "license": "ISC",
+  "dependencies": {
+    "@handlebars/allow-prototype-access": "^1.0.5",
+    "axios": "^0.21.1",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
+    "express-handlebars": "^5.3.2",
+    "faker": "^5.5.3",
+    "handlebars": "^4.7.7",
+    "mongodb": "^3.6.6",
+    "mongoose": "^5.12.9",
+    "websocket": "^1.0.34"
+  }
+}

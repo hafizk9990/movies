@@ -1,0 +1,53 @@
+<!-- sidebar -->
+    <div class="sidebar">
+        <!-- sidebar user -->
+        <div class="sidebar__user">
+            <div class="sidebar__user-img">
+                <img src="/img/user.svg" alt="">
+            </div>
+
+            <div class="sidebar__user-title">
+                <span>Admin</span>
+                <p>John Doe</p>
+            </div>
+            <button class="sidebar__user-btn" type="button">
+				<i class = "icon ion-ios-log-out"></i>
+                {{!-- Log Out --}}
+			</button>
+        </div>
+        <!-- end sidebar user -->
+
+        <!-- sidebar nav -->
+        <ul class="sidebar__nav">
+            <li class="sidebar__nav-item">
+                <a href="/admin" class="sidebar__nav-link sidebar__nav-link"> Home </a>
+            </li>
+
+
+            <li class="sidebar__nav-item">
+                <a href="/admin/add-genre" class="sidebar__nav-link sidebar__nav-link"> Genres </a>
+            </li>
+
+            <li class="sidebar__nav-item">
+                <a href="/admin/view-reviews" class="sidebar__nav-link"> Reviews</a>
+            </li>
+
+            <li class="dropdown sidebar__nav-item">
+                <a class="dropdown-toggle sidebar__nav-link" href="#" role="button" id="dropdownMenuMore" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Users </a>
+                <ul class="dropdown-menu sidebar__dropdown-menu scrollbar-dropdown" aria-labelledby="dropdownMenuMore">
+                    <li><a href="/admin/add-user"> Add user </a></li>
+                    <li><a href="/admin/view-user"> View & Take Actions </a></li>
+                </ul>
+            </li>
+
+            <li class="dropdown sidebar__nav-item">
+                <a class="dropdown-toggle sidebar__nav-link" href="#" role="button" id="dropdownMenuMore" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Movies </a>
+                <ul class="dropdown-menu sidebar__dropdown-menu scrollbar-dropdown" aria-labelledby="dropdownMenuMore">
+                    <li><a href="/admin/movies/add-movie"> Add Movie </a></li>
+                    <li><a href="/admin/movies/view-movies"> View & Take Actions </a></li>
+                </ul>
+            </li>
+        </ul>
+        <!-- end sidebar nav -->
+    </div>
+    <!-- end sidebar -->
