@@ -1,1 +1,1 @@
-# movies
+# Movies Project - MERN Stack
