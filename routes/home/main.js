@@ -14,6 +14,11 @@ router.get('/', (req, res) => {
 
 // homepage
 router.get('/home', (req, res) => {
+    req.session.uzair = 'Uzair Afzal';
+    if (req.session.uzair) {
+        console.log(`Uzair Afzal's sessions are active`);
+    }
+    
     res.render('home/page-content'); // This will be sent dynamically from ther server to index-home.handlebars file
 });
 

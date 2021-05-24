@@ -28,9 +28,21 @@
                 <div class="col-12">
                     <div class="main__title">
                         <h2> View All Movies </h2>
-                        <span style = "color: green; margin-left: 5%; margin-bottom: 2%;">
-                            {{ successUpdation }}
-                        </span>
+                       
+                        {{!-- Flash message for successful post updation --}}
+                        <div style = "font-size: 23px; color: green; margin-left: 5%; margin-top: 1%;">
+                            {{ movieUpdationSuccessful }}
+                        </div>
+                        
+                        {{!-- Flash message for successful post addition --}}
+                        <div style = "font-size: 23px; color: green; margin-left: 5%; margin-top: 1%;">
+                            {{ movieCreationSuccessful }}
+                        </div>
+                        
+                        {{!-- Flash message for successful post deletion --}}
+                        <div style = "font-size: 23px; color: red; margin-left: 5%; margin-top: 1%;">
+                            {{ movieDeletionSuccessful }}
+                        </div>
                     </div>
                 </div>
                 <!-- end main title -->
@@ -85,10 +97,10 @@
                                         <div class="main__table-text"> {{ visibility }} </div>
                                     </td>
                                     <td>
-                                        <div class="main__table-text main__table-text--green"> Add Poster Later </div>
+                                        <div class="main__table-text main__table-text--green"> {{ poster }}</div>
                                     </td>
                                     <td>
-                                        <div class="main__table-text main__table-text--green"> Add Later </div>
+                                        <div class="main__table-text main__table-text--green"> {{#select3 photos}} {{/select3}} </div>
                                     </td>
                                     <td>
                                         <div class="main__table-text"> {{ runtime }} </div>

@@ -44,7 +44,7 @@
                                     <div class="col-12 col-sm-6 col-md-12">
                                         <div class="form__img">
                                             <label for="form__img-upload"> Upload poster (270 x 400) </label>
-                                            <input id="form__img-upload" name="movie_poster" type="file" accept=".png, .jpg, .jpeg">
+                                            <input id="form__img-upload" name="movie_poster" type="file" accept=".png, .jpg, .jpeg" required>
                                             <img id="form__img" src="#" alt=" ">
                                         </div>
                                     </div>
@@ -53,19 +53,19 @@
                             <div class="col-12 col-md-7 form__content">
                                 <div class="row">
                                     <div class="col-12">
-                                        <input type="text" class="form__input" name = "movie_name" placeholder="Movie Name">
+                                        <input type="text" class="form__input" name = "movie_name" placeholder="Movie Name" required>
                                     </div>
 
                                     <div class="col-12">
-                                        <textarea id="text" name="movie_desc" class="form__textarea" placeholder="Movie Description"></textarea>
+                                        <textarea id="text" name="movie_desc" class="form__textarea" placeholder="Movie Description" required></textarea>
                                     </div>
 
                                     <div class="col-12 col-sm-6 col-lg-3">
-                                        <input type="text" class="form__input" name = "runtime" placeholder="Running Minutes">
+                                        <input type="text" class="form__input" name = "runtime" placeholder="Running Minutes" required>
                                     </div>
 
                                     <div class="col-12 col-sm-6 col-lg-3">
-                                        <select name = "movie_quality" class="js-example-basic-single" id="quality">
+                                        <select name = "movie_quality" class="js-example-basic-single" id="quality" required>
 											<option value=""></option>
 											<option value="FullHD">FullHD</option>
 											<option value="HD">HD</option>
@@ -73,15 +73,15 @@
                                     </div>
 
                                     <div class="col-12 col-sm-6 col-lg-3">
-                                        <input name = "year" type="text" class="form__input" placeholder="Year Released">
+                                        <input name = "year" type="text" class="form__input" placeholder="Year Released" required>
                                     </div>
                                     
                                     <div class="col-12 col-sm-6 col-lg-3">
-                                        <input name = "author" type="text" class="form__input" placeholder="Author">
+                                        <input name = "author" type="text" class="form__input" placeholder="Author" required>
                                     </div>
 
                                     <div class="col-12 col-lg-6">
-                                        <select class="js-example-basic-multiple" name = "movie_genres" id="genre" multiple="multiple">
+                                        <select class="js-example-basic-multiple" name = "movie_genres" id="genre" multiple="multiple" required>
 											<option value="Comedy"> Comedy </option>
 											<option value="Horror"> Horror </option>
                                             {{!-- Options will be added dynamically from the DB --}}
@@ -91,7 +91,7 @@
                                     <div class="col-12">
                                         <div class="form__gallery">
                                             <label id="gallery1" for="form__gallery-upload">Upload photos</label>
-                                            <input data-name="#gallery1" id="form__gallery-upload" name="movie_photos" class="form__gallery-upload" type="file" accept=".png, .jpg, .jpeg" multiple>
+                                            <input data-name="#gallery1" id="form__gallery-upload" name="movie_photos" class="form__gallery-upload" type="file" accept=".png, .jpg, .jpeg" multiple required>
                                         </div>
                                     </div>
                                 </div>
@@ -99,21 +99,12 @@
 
                             <div class="col-12">
                                 <div class="row">
-                                    <!-- movie -->
-                                    {{!-- <div class="col-12">
-                                        <div class="collapse show multi-collapse" id="multiCollapseExample1">
-                                            <div class="form__video">
-                                                <label id="movie1" for="form__video-upload"> YouTube Video Link </label>
-                                                <input data-name="#movie1" id="form__video-upload" name="youtube_video" class="form__video-upload" type="file" accept="video/mp4,video/x-m4v,video/*">
-                                            </div>
-                                        </div>
-                                    </div> --}}
                                     <div class="col-12">
-                                        <input type="text" class="form__input" name = "youtube_video" placeholder="YouTube Video Link">
+                                        <input type="text" class="form__input" name = "youtube_video" placeholder="YouTube Video Link" required>
                                     </div>
                                     <!-- end movie -->
                                     <div class="col-12">
-                                        <button type="submit" class="form__btn">publish</button>
+                                        <button type="submit" class="form__btn"> Publish </button>
                                     </div>
                                 </div>
                             </div>

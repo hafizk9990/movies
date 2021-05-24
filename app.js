@@ -3,26 +3,48 @@ const handlebarsEngine = require('express-handlebars');
 const Handlebars = require('handlebars');
 require('./mongodb/db');
 const bp = require('body-parser'); // this boy is deprecated. Now, we use express.json() and express.urlencoded( {} )
-const { select, select2 } = require('./helper/handlebars-helpers');
+const { select, select2, select3 } = require('./helper/handlebars-helpers');
 const uploadFiles = require('express-fileupload');
+const sessions = require('express-session');
+const flash = require('connect-flash');
 
-// creating express app and http server through that
+
+// creating server
 const app = express();
 app.listen(64000, () => console.log('NodeJS server running now'));
 
-// setting up our json body parser
+
+// setting up our middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(uploadFiles({ useTempFiles: true }));// setting up file uploading functionality
+app.use(flash());
+app.use(sessions({
+    secret: 'uzair9990', 
+    resave: true,
+    saveUninitialized: true, 
+}));
 
 
-// setting up our templating engine and default layout to home
+// setting up flash response messages for movie CRUD
+app.use( (req, res, next) => {
+    res.locals.movieCreationSuccessful = req.flash('movieCreationSuccessful');
+    res.locals.movieDeletionSuccessful = req.flash('movieDeletionSuccessful');
+    res.locals.movieUpdationSuccessful = req.flash('movieUpdationSuccessful');
+    
+    next();
+});
+
+
+// setting up our templating engine, default layout and helper functions
 app.set('view engine', 'handlebars'); // tell NodeJS what is your templating engine (express-handlebars)
-app.engine('handlebars', handlebarsEngine( {defaultLayout: 'index-home', helpers: { select: select, select2: select2 }} )); // Tell it what is the default file from the layouts (EXHBR peeks here by default) folder (views/layouts/index-home)
-
-
-// setting up file uploading functionality
-app.use(uploadFiles({
-    useTempFiles: true,
+app.engine('handlebars', handlebarsEngine({
+    defaultLayout: 'index-home',  // Tell it what is the default file from the layouts (EXHBR peeks here by default) folder (views/layouts/index-home)
+    helpers: {
+        select: select, 
+        select2: select2, 
+        select3: select3
+    }
 }));
 
 
