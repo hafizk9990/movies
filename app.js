@@ -3,7 +3,7 @@ const handlebarsEngine = require('express-handlebars');
 const Handlebars = require('handlebars');
 require('./mongodb/db');
 const bp = require('body-parser'); // this boy is deprecated. Now, we use express.json() and express.urlencoded( {} )
-const { select, select2, select3 } = require('./helper/handlebars-helpers');
+const { select, select2, forOtherImagesofViewMovies, forEditMovies, genreForMovieDetails, moviePhotoRequest, countPhotos } = require('./helper/handlebars-helpers');
 const uploadFiles = require('express-fileupload');
 const sessions = require('express-session');
 const flash = require('connect-flash');
@@ -43,7 +43,11 @@ app.engine('handlebars', handlebarsEngine({
     helpers: {
         select: select, 
         select2: select2, 
-        select3: select3
+        forOtherImagesofViewMovies: forOtherImagesofViewMovies,
+        forEditMovies: forEditMovies,
+        genreForMovieDetails: genreForMovieDetails,
+        moviePhotoRequest: moviePhotoRequest, 
+        countPhotos: countPhotos
     }
 }));
 
@@ -52,6 +56,7 @@ app.engine('handlebars', handlebarsEngine({
 app.use('/', require('./routes/home/main'));
 app.use('/admin', require('./routes/admin/main'));
 app.use('/admin/movies', require('./routes/admin/movies'));
+app.use('/home/movies', require('./routes/home/movies'));
 
 
 // serving template files for home
@@ -68,3 +73,8 @@ app.use('/fonts', express.static('./public/admin/fonts'));
 app.use('/img', express.static('./public/admin/img'));
 app.use('/js', express.static('./public/admin/js'));
 app.use('/scss', express.static('./public/admin/scss'));
+
+
+// creating custom requests for images of movie posters and photos
+app.use('/posters', express.static('./public/admin/img/posters'));
+app.use('/photos', express.static('./public/admin/img/photos/movie-photos'));

@@ -11,12 +11,17 @@ router.all('/*', (req, res, next) => { // select everything that comes after thi
     next();
 });
 
+// redirecting "/admin/movies" route to the "/admin/movies/view-movies" route
+router.get('/', (req, res) => {
+    res.redirect('/admin/movies/view-movies');
+});
+
 
 // view-movies (get request)
 router.get('/view-movies', (req, res) => {
     Movies.find( {} ).lean() // will find all movies (lean() is a handlebars thing)
     .then( (movies) => {
-        res.render('admin/view-movies', { data: movies}); // passing all the data as parameters
+        res.render('admin/view-movies', { data: movies }); // passing all the data as parameters
     })
     .catch( (error) => res.status(404).send('Failed to load the movies', error));
 });
@@ -88,7 +93,7 @@ router.post('/add-movie', (req, res) => {
         videoLink: incomingData.youtube_video.replace('/watch?v=', '/embed/'),
         genre: incomingData.movie_genres,
         visibility: 1, 
-        rating: 0.0,
+        rating: "0.0",
         dateCreated: today, 
         totalReviews: 0, 
         author: incomingData.author, 
@@ -135,6 +140,40 @@ router.get('/edit-movie/:id', (req, res) => {
 
 // edit-movie (post)
 router.post('/edit-movie/:id', (req, res) => {
+    let photosArray = [];
+    
+    let photoObject = req.files.movie_photos;
+    let posterObject = req.files.movie_poster;
+    // console.log('******************************PHOTO-OBJECT: ', photoObject);
+    // console.log('POSTER-OBJECT: ', posterObject);
+
+    if (Object.keys(photoObject).length === 9) {
+        posterObject.mv('./public/admin/img/posters/' + posterObject.name); // this moves the poster file to the server
+        
+        if (photoObject[1]) {
+            console.log('9 IMAGES UPLOADED');
+            for (let i = 0; i < Object.keys(photoObject).length; i++) {
+                let photoObject = req.files.movie_photos[i];
+                photoObject.mv('./public/admin/img/photos/movie-photos/' + photoObject.name); // individually moving all the photo files to the server
+                photosArray.push(photoObject.name);
+            }
+        }
+        else {
+            console.log('JUST 1 IMAGE UPLOADED');
+            let photoObject = req.files.movie_photos;
+            photoObject.mv('./public/admin/img/photos/movie-photos/' + photoObject.name); // moving photo file to the server
+            photosArray.push(photoObject.name);
+        }
+    }
+    else if (Object.keys(photoObject).length > 0) {
+        console.log('MORE THAN 1 BUT NOT 9 IMAGES UPLOADED');
+        for (let i = 0; i < Object.keys(photoObject).length; i++) {
+            let photoObject = req.files.movie_photos[i];
+            photoObject.mv('./public/admin/img/photos/movie-photos/' + photoObject.name); // individually moving all the photo files to the server
+            photosArray.push(photoObject.name);
+        }
+    }
+    
     let incomingData = req.body;
     let id = req.params.id; 
     
@@ -153,10 +192,13 @@ router.post('/edit-movie/:id', (req, res) => {
         videoLink: incomingData.youtube_video.replace('/watch?v=', '/embed/'),
         genre: incomingData.movie_genres,
         visibility: 1, 
-        rating: 0.0,
+        rating: "0.0",
         dateCreated: today, 
         totalReviews: 0, 
-        author: incomingData.author
+        author: incomingData.author, 
+        poster: req.files.movie_poster.name, 
+        photos: photosArray
+        
     };
     Movies.findOneAndUpdate( {_id: ObjectID(id) }, dataToUpdate).lean()
     .then( (updatedMovie) => {

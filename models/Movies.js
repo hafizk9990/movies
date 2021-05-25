@@ -39,7 +39,7 @@ let moviesSchema =
         required: true
     }, 
     rating: {
-        type: Number, 
+        type: String, 
         required: true
     },  
     totalReviews: {
