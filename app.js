@@ -3,7 +3,7 @@ const handlebarsEngine = require('express-handlebars');
 const Handlebars = require('handlebars');
 require('./mongodb/db');
 const bp = require('body-parser'); // this boy is deprecated. Now, we use express.json() and express.urlencoded( {} )
-const { select, select2, forOtherImagesofViewMovies, forEditMovies, genreForMovieDetails, moviePhotoRequest, countPhotos } = require('./helper/handlebars-helpers');
+const { select, select2, forOtherImagesofViewMovies, forEditMovies, genreForMovieDetails, moviePhotoRequest, countPhotos, visibilityStatus } = require('./helper/handlebars-helpers');
 const uploadFiles = require('express-fileupload');
 const sessions = require('express-session');
 const flash = require('connect-flash');
@@ -31,6 +31,10 @@ app.use( (req, res, next) => {
     res.locals.movieCreationSuccessful = req.flash('movieCreationSuccessful');
     res.locals.movieDeletionSuccessful = req.flash('movieDeletionSuccessful');
     res.locals.movieUpdationSuccessful = req.flash('movieUpdationSuccessful');
+    res.locals.signUpSuccess = req.flash('signUpSuccess');
+    res.locals.alreadySignedUp = req.flash('alreadySignedUp');
+    res.locals.wrongEmailSignIn = req.flash('wrongEmailSignIn');
+    res.locals.wrongPasswordSignIn = req.flash('wrongPasswordSignIn');
     
     next();
 });
@@ -47,7 +51,8 @@ app.engine('handlebars', handlebarsEngine({
         forEditMovies: forEditMovies,
         genreForMovieDetails: genreForMovieDetails,
         moviePhotoRequest: moviePhotoRequest, 
-        countPhotos: countPhotos
+        countPhotos: countPhotos, 
+        visibilityStatus: visibilityStatus
     }
 }));
 

@@ -13,11 +13,7 @@ let moviesSchema =
     runtime: {
         type: String, 
         required: true
-    }, 
-    dateCreated: {
-        type: String, 
-        required: true
-    }, 
+    },
     videoQuality: {
         type: String, 
         required: true
@@ -45,11 +41,7 @@ let moviesSchema =
     totalReviews: {
         type: Number, 
         required: true
-    }, 
-    author: {
-        type: String, 
-        required: true
-    }, 
+    },
     poster: {
         type: String, 
         required: true
@@ -58,36 +50,42 @@ let moviesSchema =
         type: [String], 
         required: true
     },
-    // reviews: {
-    //     title: {
-    //         type: String, 
-    //         required: true
-    //     }, 
-    //     author: {
-    //         type: String, 
-    //         required: true
-    //     }, 
-    //     body: {
-    //         type: String, 
-    //         required: true
-    //     }, 
-    //     rating: {
-    //         type: String, 
-    //         required: true
-    //     }, 
-    //     liked: {
-    //         type: Number, 
-    //         required: true
-    //     }, 
-    //     disliked: {
-    //         type: Number, 
-    //         required: true
-    //     }, 
-    //     dateCreated: {
-    //         type: String, 
-    //         required: true
-    //     }
-    // }
+    reviews: [ // an array of objects. Each object is a signel review of the movie
+        {
+            reviewId: {
+                type: Number,
+                required: true
+            },
+            reviewTitle: {
+                type: String, 
+                required: true
+            }, 
+            reviewAuthor: {
+                type: String, 
+                required: true
+            }, 
+            reviewContent: {
+                type: String, 
+                required: true
+            }, 
+            reviewRating: {
+                type: String, 
+                required: true
+            }, 
+            reviewLiked: {
+                type: Number, 
+                required: true
+            }, 
+            reviewDisliked: {
+                type: Number, 
+                required: true
+            }, 
+            reviewDateCreated: {
+                type: String, 
+                required: true
+            }
+        }
+    ]
 }
 
 const MoviesModel = mongoose.model('movies', moviesSchema);

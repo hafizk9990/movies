@@ -43,10 +43,8 @@ router.post('/add-movie', (req, res) => {
         // if (typeof(photoObject) == "undefined" || typeof(posterObject) == "undefined") {
         //     res.redirect('back');
         // }
-
+        posterObject.mv('./public/admin/img/posters/' + posterObject.name); // this moves the poster file to the server
         if (Object.keys(photoObject).length === 9) {
-            posterObject.mv('./public/admin/img/posters/' + posterObject.name); // this moves the poster file to the server
-            
             if (photoObject[1]) {
                 console.log('9 IMAGES UPLOADED');
                 for (let i = 0; i < Object.keys(photoObject).length; i++) {
@@ -78,12 +76,6 @@ router.post('/add-movie', (req, res) => {
     
     let incomingData = req.body;
 
-    let today = new Date();
-    let dd = String(today.getDate()).padStart(2, '0');
-    let mm = String(today.getMonth() + 1).padStart(2, '0');
-    let yyyy = today.getFullYear();
-    today = dd + '/' + mm + '/' + yyyy;
-
     let dataToSave = new Movies({
         name: incomingData.movie_name,
         description: incomingData.movie_desc, 
@@ -92,11 +84,9 @@ router.post('/add-movie', (req, res) => {
         yearReleased: incomingData.year, 
         videoLink: incomingData.youtube_video.replace('/watch?v=', '/embed/'),
         genre: incomingData.movie_genres,
-        visibility: 1, 
+        visibility: incomingData.visibility_status == 'Yes'? 1 : 0,
         rating: "0.0",
-        dateCreated: today, 
         totalReviews: 0, 
-        author: incomingData.author, 
         poster: req.files.movie_poster.name, 
         photos: photosArray
     });
@@ -144,11 +134,9 @@ router.post('/edit-movie/:id', (req, res) => {
     
     let photoObject = req.files.movie_photos;
     let posterObject = req.files.movie_poster;
-    // console.log('******************************PHOTO-OBJECT: ', photoObject);
-    // console.log('POSTER-OBJECT: ', posterObject);
-
+    posterObject.mv('./public/admin/img/posters/' + posterObject.name); // this moves the poster file to the server
     if (Object.keys(photoObject).length === 9) {
-        posterObject.mv('./public/admin/img/posters/' + posterObject.name); // this moves the poster file to the server
+        
         
         if (photoObject[1]) {
             console.log('9 IMAGES UPLOADED');
@@ -175,13 +163,7 @@ router.post('/edit-movie/:id', (req, res) => {
     }
     
     let incomingData = req.body;
-    let id = req.params.id; 
-    
-    let today = new Date();
-    let dd = String(today.getDate()).padStart(2, '0');
-    let mm = String(today.getMonth() + 1).padStart(2, '0');
-    let yyyy = today.getFullYear();
-    today = dd + '/' + mm + '/' + yyyy;
+    let id = req.params.id;
 
     let dataToUpdate = {
         name: incomingData.movie_name,
@@ -191,14 +173,11 @@ router.post('/edit-movie/:id', (req, res) => {
         yearReleased: incomingData.year, 
         videoLink: incomingData.youtube_video.replace('/watch?v=', '/embed/'),
         genre: incomingData.movie_genres,
-        visibility: 1, 
+        visibility: incomingData.visibility_status == 'Yes'? 1 : 0,
         rating: "0.0",
-        dateCreated: today, 
         totalReviews: 0, 
-        author: incomingData.author, 
         poster: req.files.movie_poster.name, 
         photos: photosArray
-        
     };
     Movies.findOneAndUpdate( {_id: ObjectID(id) }, dataToUpdate).lean()
     .then( (updatedMovie) => {

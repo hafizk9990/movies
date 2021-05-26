@@ -14,7 +14,12 @@ router.get('/', (req, res) => {
 
 // add-genre
 router.get('/add-genre', (req, res) => {
-    res.render('admin/add-genre');
+    if (req.session.role === 'Admin') {
+        res.render('admin/add-genre');
+    }
+    else {
+        res.render('home/404', { layout: false });
+    }
 });
 
 // view-reviews (get request)

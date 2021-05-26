@@ -67,27 +67,58 @@
                                     <div class="col-12 col-sm-6 col-lg-3">
                                         <select name = "movie_quality" class="js-example-basic-single" id="quality" required>
 											<option value=""></option>
-											<option value="FullHD">FullHD</option>
-											<option value="HD">HD</option>
+											<option value="FullHD">HDTV</option>
+											<option value="HD">FullHD</option>
+											<option value="HD">BluRay</option>
+											<option value="HD">DVDRip</option>
+											<option value="HD">Telesync</option>
+											<option value="HD">WEBDL</option>
+											<option value="HD">Cam</option>
 										</select>
                                     </div>
 
                                     <div class="col-12 col-sm-6 col-lg-3">
                                         <input name = "year" type="text" class="form__input" placeholder="Year Released" required>
                                     </div>
-                                    
+
                                     <div class="col-12 col-sm-6 col-lg-3">
-                                        <input name = "author" type="text" class="form__input" placeholder="Author" required>
+                                        <input name = "visibility_status" type="text" class="form__input" placeholder="Publish? Yes | No" required>
                                     </div>
 
                                     <div class="col-12 col-lg-6">
                                         <select class="js-example-basic-multiple" name = "movie_genres" id="genre" multiple="multiple" required>
 											<option value="Comedy"> Comedy </option>
 											<option value="Horror"> Horror </option>
-                                            {{!-- Options will be added dynamically from the DB --}}
+											<option value="Action"> Action </option>
+											<option value="Drama"> Drama </option>
+											<option value="Fantasy"> Fantasy </option>
+											<option value="Mystery"> Mystery </option>
+											<option value="Romance"> Romance </option>
+											<option value="Thriller"> Thriller </option>
+											<option value="Western"> Horror </option>
+											<option value="Psychological"> Psychological </option>
+											<option value="True Story"> True Story </option>
+											<option value="Technology"> Technology </option>
+											<option value="Dark"> Dark </option>
+											<option value="Erotica"> Erotica </option>
+											<option value="Anime"> Anime </option>
+											<option value="Historical"> Historical </option>
+											<option value="Military"> Military </option>
+											<option value="War"> War </option>
+											<option value="Family"> Family </option>
+											<option value="Kids"> Kids </option>
+											<option value="Spy"> Spy </option>
+											<option value="Espionage"> Espionage </option>
+											<option value="Adventure"> Adventure </option>
+											<option value="Superhero"> Superhero </option>
+											<option value="Sexual"> Sexual </option>
+											<option value="Teen"> Teen </option>
+											<option value="Philosophy"> Philosophy </option>
+                                            
+                                            {{!-- Other Options will be added dynamically from the DB --}}
+
 										</select>
                                     </div>
-
                                     <div class="col-12">
                                         <div class="form__gallery">
                                             <label id="gallery1" for="form__gallery-upload">Upload photos</label>

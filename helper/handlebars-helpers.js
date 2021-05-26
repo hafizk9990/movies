@@ -1,16 +1,8 @@
 module.exports = {
-    select: function(genreArray, options) {
-        // this is for the genreArray that comes in while we are editing the movie
-        // sadly, i don't know why, it works but only for the first genre
+    select: function(genreName, options) {
+        // this is for the genreArray's each genre that comes in while we are editing the movie
 
-        if (genreArray.length > 1) {
-            for (let i = 0; i < genreArray.length; i++) {
-                return options.fn(this).replace(new RegExp(' value=\"'+ genreArray[i] + '\"'), '$&selected="selected"');
-            }
-        }
-        else if (genreArray.length == 1) {
-            return options.fn(this).replace(new RegExp(' value=\"'+ genreArray + '\"'), '$&selected="selected"');
-        }
+        return(`<option selected value=${ genreName }> ${ genreName } </option>`)
     },
     select2: function(selected, options) {
         // this is for videoQuality options while we are editing the movies
@@ -69,10 +61,13 @@ module.exports = {
             <a itemprop="contentUrl" data-size="1920x1280">
                 <img src="/photos/${ photoName }" itemprop="thumbnail" alt="Image description" />
             </a>
-        <figcaption itemprop="caption description">Some image caption 1</figcaption>
+            <figcaption itemprop="caption description"> Additional Movie Photo </figcaption>
         </figure>`);
     }, 
     countPhotos: function(array) {
         return array.length;
+    }, 
+    visibilityStatus: function(input, options) {
+        return input == 'true'? 'Yes': 'No';
     }
 }

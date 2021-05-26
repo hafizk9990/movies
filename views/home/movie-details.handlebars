@@ -45,7 +45,7 @@
 							<!-- card cover -->
 							<div class="col-12 col-sm-4 col-md-4 col-lg-3 col-xl-5">
 								<div class="card__cover">
-									<img style = "height: 350px" src="/posters/{{movie.poster}}" alt="">
+									<img style = "height: 350px;" src="/posters/{{movie.poster}}" alt="">
 								</div>
 							</div>
 							<!-- end card cover -->
@@ -66,9 +66,7 @@
 										<li><span> Release Year: </span> {{ movie.yearReleased }} </li>
 										<li><span> Running Time: </span> {{ movie.runtime }} minutes </li>
 									</ul>
-									<div class="col-12 card__description card__description--details">
-										{{ movie.description }}
-									</div>
+									<div class="col-12 card__description card__description--details">{{movie.description}}</div>
 								</div>
 							</div>
 							<!-- end card content -->
