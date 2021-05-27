@@ -3,7 +3,11 @@ const handlebarsEngine = require('express-handlebars');
 const Handlebars = require('handlebars');
 require('./mongodb/db');
 const bp = require('body-parser'); // this boy is deprecated. Now, we use express.json() and express.urlencoded( {} )
-const { select, select2, forOtherImagesofViewMovies, forEditMovies, genreForMovieDetails, moviePhotoRequest, countPhotos, visibilityStatus } = require('./helper/handlebars-helpers');
+const { select, select2, forOtherImagesofViewMovies, 
+    forEditMovies, genreForMovieDetails, moviePhotoRequest, 
+    countPhotos, visibilityStatus, generateHomeGenreNamesDynamicallyforNonMobile,
+    generateHomeGenreNamesDynamicallyforMobile, generateHomeMoviesDynamically
+} = require('./helper/handlebars-helpers');
 const uploadFiles = require('express-fileupload');
 const sessions = require('express-session');
 const flash = require('connect-flash');
@@ -35,6 +39,9 @@ app.use( (req, res, next) => {
     res.locals.alreadySignedUp = req.flash('alreadySignedUp');
     res.locals.wrongEmailSignIn = req.flash('wrongEmailSignIn');
     res.locals.wrongPasswordSignIn = req.flash('wrongPasswordSignIn');
+    res.locals.genreAdditionSuccessful = req.flash('genreAdditionSuccessful');
+    res.locals.genreDeletionSuccessful = req.flash('genreDeletionSuccessful');
+    res.locals.duplicateGenreAdditionFailed = req.flash('duplicateGenreAdditionFailed');
     
     next();
 });
@@ -52,7 +59,10 @@ app.engine('handlebars', handlebarsEngine({
         genreForMovieDetails: genreForMovieDetails,
         moviePhotoRequest: moviePhotoRequest, 
         countPhotos: countPhotos, 
-        visibilityStatus: visibilityStatus
+        visibilityStatus: visibilityStatus,
+        generateHomeGenreNamesDynamicallyforNonMobile: generateHomeGenreNamesDynamicallyforNonMobile,
+        generateHomeGenreNamesDynamicallyforMobile: generateHomeGenreNamesDynamicallyforMobile,
+        generateHomeMoviesDynamically: generateHomeMoviesDynamically,
     }
 }));
 
@@ -61,6 +71,7 @@ app.engine('handlebars', handlebarsEngine({
 app.use('/', require('./routes/home/main'));
 app.use('/admin', require('./routes/admin/main'));
 app.use('/admin/movies', require('./routes/admin/movies'));
+app.use('/admin/genres', require('./routes/admin/genres'));
 app.use('/home/movies', require('./routes/home/movies'));
 
 

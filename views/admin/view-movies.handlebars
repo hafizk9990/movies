@@ -17,9 +17,83 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="author" content="Dmitry Volkov">
-    <title> View All Movies </title>
+    <title> View Movies & Requests </title>
 </head>
 <body>
+    <!-- main content -->
+    <main class="main">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- main title -->
+                <div class="col-12">
+                    <div class="main__title">
+                        <h2> View Movie Requests </h2>
+                    </div>
+                </div>
+                <!-- end main title -->
+                <!-- movies -->
+                <div class="col-12">
+                    <div class="main__table-wrap">
+                        <table class="main__table">
+                            <thead>
+                                <tr>
+                                    <th> ID </th>
+                                    <th> Movie Name </th>
+                                    <th> Requested By </th>
+                                    <th> Delete Request </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each data}}
+                                <tr>
+                                    <td>
+                                        <div class="main__table-text"> {{ _id }} </div>
+                                    </td>
+                                    
+                                    <td>
+                                        <div class="main__table-text"> {{ name }} </div>
+                                    </td>
+                                    <td>
+                                        <div class="main__user">
+                                            <div class="main__avatar">
+                                                <img src="/img/user.svg" alt="">
+                                            </div>
+                                            <div class="main__meta">
+                                                <h3> {{ author }} </h3>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="main__table-btns">
+                                            <a href="#modal-delete-{{_id}}" class="main__table-btn main__table-btn--delete open-modal">
+												<i class="icon ion-ios-trash"></i>
+											</a>
+                                        </div>
+                                    </td>
+                                    <div id="modal-delete-{{_id}}" class="zoom-anim-dialog mfp-hide modal">
+                                        <h6 class="modal__title"> Delete Movie? </h6>
+                                        <p class="modal__text">Are you sure you want to permanently delete {{name}}?</p>
+                                        <div class="modal__btns">
+                                            <a href = "/admin/movies/delete-movie/{{_id}}" class="modal__btn modal__btn--apply" type="button">Delete</a>
+                                            <button class="modal__btn modal__btn--dismiss" type="button">Dismiss</button>
+                                        </div>
+                                    </div>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- end movies -->
+            </div>
+        </div>
+    </main>
+
+
+
+
+
+
     <!-- main content -->
     <main class="main">
         <div class="container-fluid">
@@ -53,7 +127,6 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th> Author </th>
                                     <th> Name </th>
                                     <th> Rating </th>
                                     <th> Genres </th>
@@ -63,7 +136,6 @@
                                     <th> Runtime </th>
                                     <th> Video Quality </th>
                                     <th> Total Reviews </th>
-                                    <th> Date Created </th>
                                     <th> Actions </th>
                                 </tr>
                             </thead>
@@ -75,16 +147,6 @@
                                         <div class="main__table-text"> {{ _id }} </div>
                                     </td>
                                     <td>
-                                        <div class="main__user">
-                                            <div class="main__avatar">
-                                                <img src="/img/user.svg" alt="">
-                                            </div>
-                                            <div class="main__meta">
-                                                <h3> {{ author }} </h3>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
                                         <div class="main__table-text"> {{ name }} </div>
                                     </td>
                                     <td>
@@ -94,7 +156,7 @@
                                         <div class="main__table-text"> {{ genre }} </div>
                                     </td>
                                     <td>
-                                        <div class="main__table-text"> {{ visibility }} </div>
+                                        <div class="main__table-text"> {{#visibilityStatus visibility}} {{/visibilityStatus}} </div>
                                     </td>
                                     <td>
                                         <div class="main__table-text main__table-text--green"> {{ poster }}</div>
@@ -110,9 +172,6 @@
                                     </td>
                                     <td>
                                         <div class="main__table-text">  {{ totalReviews }}</div>
-                                    </td>
-                                    <td>
-                                        <div class="main__table-text"> {{ dateCreated }} </div>
                                     </td>
                                     <td>
                                         <div class="main__table-btns">

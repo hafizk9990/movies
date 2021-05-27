@@ -12,16 +12,6 @@ router.get('/', (req, res) => {
     res.render('admin/page-content');
 });
 
-// add-genre
-router.get('/add-genre', (req, res) => {
-    if (req.session.role === 'Admin') {
-        res.render('admin/add-genre');
-    }
-    else {
-        res.render('home/404', { layout: false });
-    }
-});
-
 // view-reviews (get request)
 router.get('/view-reviews', (req, res) => {
     res.render('admin/view-reviews');

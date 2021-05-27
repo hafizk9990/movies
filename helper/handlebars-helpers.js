@@ -1,3 +1,5 @@
+const Movies = require("../models/Movies");
+
 module.exports = {
     select: function(genreName, options) {
         // this is for the genreArray's each genre that comes in while we are editing the movie
@@ -44,7 +46,7 @@ module.exports = {
         if (genreArray) {
             let toReturn = ``;
             for (let i = 0; i < genreArray.length; i++) {
-                toReturn += genreArray[i] + ' | '
+                toReturn += genreArray[i] + ' | ';
             }
             return (toReturn.slice(0, -2));
         }
@@ -68,6 +70,73 @@ module.exports = {
         return array.length;
     }, 
     visibilityStatus: function(input, options) {
-        return input == 'true'? 'Yes': 'No';
+        return (input == 1? 'Yes': 'No');
+    }, 
+    generateHomeGenreNamesDynamicallyforNonMobile: function(eachGenreObject, arrayIndex, option) {
+        return(`
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#tab-${ arrayIndex + 2 }" role="tab" aria-controls="tab-${ arrayIndex + 2 }" aria-selected="false"> ${ eachGenreObject.name } </a>
+            </li>
+        `);
+    },
+    generateHomeGenreNamesDynamicallyforMobile: function(eachGenreObject, arrayIndex, option) {
+        return(`
+            <li class="nav-item">
+                <a class="nav-link" id="2-tab" data-toggle="tab" href="#tab-${ arrayIndex + 2 }" role="tab" aria-controls="tab-${ arrayIndex + 2 }" aria-selected="false"> ${ eachGenreObject.name } </a>
+            </li>
+        `);
+    },
+    generateHomeMoviesDynamically: function(tabNumber, genreObject, options) {
+        return(
+            `<div class="tab-pane fade" id="tab-${tabNumber+2}" role="tabpanel" aria-labelledby="${tabNumber+2}-tab">
+                <div class="row">
+                    <!-- card -->
+                    <div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+                        <div class="card">
+                            <div class="card__cover">
+                                <img src="img/covers/cover.jpg" alt="">
+                                <a href="#" class="card__play">
+                                    <i class="icon ion-ios-play"></i>
+                                </a>
+                            </div>
+                            <div class="card__content">
+                                <h3 class="card__title"><a href="#"> You dream, I dream, we dream </a></h3>
+                                <span class="card__category">
+                                    <a href="#">Action</a>
+                                    <a href="#">Triler</a>
+                                </span>
+                                <span class="card__rate"><i class="icon ion-ios-star"></i>8.4</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end card -->
+
+
+
+                    <!-- card -->
+                    <div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+                        <div class="card">
+                            <div class="card__cover">
+                                <img src="img/covers/cover.jpg" alt="">
+                                <a href="#" class="card__play">
+                                    <i class="icon ion-ios-play"></i>
+                                </a>
+                            </div>
+                            <div class="card__content">
+                                <h3 class="card__title"><a href="#"> You dream, I dream, We dream </a></h3>
+                                <span class="card__category">
+                                    <a href="#">Action</a>
+                                    <a href="#">Triler</a>
+                                </span>
+                                <span class="card__rate"><i class="icon ion-ios-star"></i>8.4</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end card -->
+
+
+                </div>
+            </div>`
+        );
     }
 }

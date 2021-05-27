@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Movies = require('../../models/Movies');
+const Genres = require('../../models/Genres');
 const Users = require('../../models/Users');
 const mongoose = require('mongoose');
 const { ObjectID } = require('bson');
@@ -21,9 +22,22 @@ router.get('/', (req, res) => {
 
 // homepage
 router.get('/home', (req, res) => {
-    Movies.find().sort( {_id: 1} ).limit(7).lean()
-    .then( (movies) => {
-        res.render('home/page-content', { carousalData: movies }); // This will be sent dynamically from ther server to index-home.handlebars file
+    Movies.find( {} ).lean()
+    .then( (allMovies) => {
+        Genres.find( {} ).lean().then( (allGenres) => {
+            // console.log(allMovies.length);
+            // console.log(allGenres.length);
+            let topSevenMovies = [];
+            for (let i = 0; i < 7; i++) { topSevenMovies[i] = allMovies[i] }
+            
+            // console.log(topSevenMovies.length);
+            res.render('home/page-content', {
+            movies: allMovies,
+            carouselData: topSevenMovies,
+            genresData: allGenres
+        })}).catch( (error) => {
+            res.status(404).send('Could not find genres', error);
+        });
     })
     .catch( (error) => {
         res.status(404).send('Could not find top 6 movies for the carousal', error);
@@ -108,6 +122,5 @@ router.post('/signup', (req, res) => {
 router.get('/home/faq', (req, res) => {
     res.render('home/faq', { layout: false }); // Will add layout in some other way. This way gives me trouble
 });
-
 
 module.exports = router
