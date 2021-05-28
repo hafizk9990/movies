@@ -17,14 +17,9 @@ router.get('/view-reviews', (req, res) => {
     res.render('admin/view-reviews');
 });
 
-// add-user (get request)
-router.get('/add-user', (req, res) => {
-    res.render('admin/add-user', { layout: false });
-});
+// // add-user (get request)
+// router.get('/add-user', (req, res) => {
+//     res.render('admin/add-user', { layout: false });
+// });
 
-// view-user (get request)
-router.get('/view-user', (req, res) => {
-    res.render('admin/view-user');
-});
-
-module.exports = router
+module.exports = router;

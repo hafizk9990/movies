@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="/css/magnific-popup.css">
+    <link rel="stylesheet" href="/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="/css/select2.min.css">
+    <link rel="stylesheet" href="/css/ionicons.min.css">
+    <link rel="stylesheet" href="/css/admin.css">
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="/icon/favicon-32x32.png">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="Dmitry Volkov">
+    <title> View All Users </title>
+</head>
+<body>
+    <!-- main content -->
+    <main class="main">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- main title -->
+                <div class="col-12">
+                    <div class="main__title">
+                        <h2> View All Users </h2>
+                        <div style = "font-size: 23px; color: green; margin-left: 5%; margin-top: 1%;">
+                            {{ userDeletionSuccessful }}
+                            {{ userMadeAdmin }}
+                            {{ userMadeNonAdmin }}
+                        </div>
+                    </div>
+                </div>
+                <!-- end main title -->
+                <!-- users -->
+                <div class="col-12">
+                    <div class="main__table-wrap">
+                        <table class="main__table">
+                            <thead>
+                                <tr>
+                                    <th> ID </th>
+                                    <th> Email </th>
+                                    <th> First Name </th>
+                                    <th> Last Name </th>
+                                    <th> User Type </th>
+                                    <th> Actions </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each users}}
+                                    <tr>
+                                        <td>
+                                            <div class="main__table-text"> {{ _id }} </div>
+                                        </td>
+                                        <td>
+                                            <div class="main__user">
+                                                <div class="main__avatar">
+                                                    <img src="/img/user.svg" alt="">
+                                                </div>
+                                                <div class="main__table-text">
+                                                    <h3> {{ email }} </h3>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="main__table-text"> {{ firstName }} </div>
+                                        </td>
+                                        <td>
+                                            <div class="main__table-text"> {{ lastName }} </div>
+                                        </td>
+                                        <td>
+                                            <div class="main__table-text"> {{ userType }} </div>
+                                        </td>
+                                        <td>
+                                            <div class="main__table-btns">
+                                                <a href="#modal-change-user-type-{{_id}}" class="main__table-btn main__table-btn--banned open-modal">
+                                                    <i class="icon ion-ios-lock"></i>
+                                                </a>
+                                                <a href="#modal-delete-{{_id}}" class="main__table-btn main__table-btn--delete open-modal">
+                                                    <i class="icon ion-ios-trash"></i>
+                                                </a>
+                                            </div>
+                                            <!-- modal status -->
+                                            <div id="modal-change-user-type-{{_id}}" class="zoom-anim-dialog mfp-hide modal">
+                                                <h6 class="modal__title"> Change Permissions? </h6>
+                                                <p class="modal__text"> Are you sure you want to change permissions for this user? </p>
+                                                <div class="modal__btns">
+                                                    <a href = "/admin/view-users/update-admin/{{_id}}?_method=PUT" class="modal__btn modal__btn--apply" type = "button"> Make Admin </a>
+                                                    <a href = "/admin/view-users/update-non-admin/{{_id}}?_method=PUT" class="modal__btn modal__btn--apply" type = "button"> Make Non-Admin </a>
+                                                </div>
+                                            </div>
+                                            <!-- end modal status -->
+                                            <!-- modal delete -->
+                                            <div id="modal-delete-{{_id}}" class="zoom-anim-dialog mfp-hide modal">
+                                                <h6 class="modal__title"> Delete User? </h6>
+                                                <p class="modal__text"> Are you sure you want to permanently delete this user? </p>
+                                                <div class="modal__btns">
+                                                    <a href = "/admin/view-users/delete/{{_id}}?_method=DELETE" class="modal__btn modal__btn--apply" type = "button"> Delete </a>
+                                                    <button class="modal__btn modal__btn--dismiss" type="button"> Cancel </button>
+                                                </div>
+                                            </div>
+                                            <!-- end modal delete -->
+                                        </td>
+                                    </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- end users -->
+            </div>
+        </div>
+    </main>
+    <!-- end main content -->
+    <!-- JS -->
+    <script src="/js/jquery-3.5.1.min.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/jquery.magnific-popup.min.js"></script>
+    <script src="/js/jquery.mousewheel.min.js"></script>
+    <script src="/js/jquery.mCustomScrollbar.min.js"></script>
+    <script src="/js/select2.min.js"></script>
+    <script src="/js/admin.js"></script>
+</body>
+
+</html>
+
+
+
+
+{{!-- <!-- paginator -->
+<div class="col-12">
+<div class="paginator-wrap">
+    <span>10 from 3 702</span>
+
+    <ul class="paginator">
+        <li class="paginator__item paginator__item--prev">
+            <a href="#"><i class="icon ion-ios-arrow-back"></i></a>
+        </li>
+        <li class="paginator__item"><a href="#">1</a></li>
+        <li class="paginator__item paginator__item--active"><a href="#">2</a></li>
+        <li class="paginator__item"><a href="#">3</a></li>
+        <li class="paginator__item"><a href="#">4</a></li>
+        <li class="paginator__item paginator__item--next">
+            <a href="#"><i class="icon ion-ios-arrow-forward"></i></a>
+        </li>
+    </ul>
+</div>
+</div>
+<!-- end paginator --> --}}

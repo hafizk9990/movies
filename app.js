@@ -11,6 +11,8 @@ const { select, select2, forOtherImagesofViewMovies,
 const uploadFiles = require('express-fileupload');
 const sessions = require('express-session');
 const flash = require('connect-flash');
+const methodOverride = require('method-override');
+
 
 
 // creating server
@@ -19,6 +21,7 @@ app.listen(64000, () => console.log('NodeJS server running now'));
 
 
 // setting up our middleware
+app.use(methodOverride('_method')); // to get router.put and router.delete functionality for updation and deletion. This overrides .post with .delete / .put
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(uploadFiles({ useTempFiles: true }));// setting up file uploading functionality
@@ -42,6 +45,9 @@ app.use( (req, res, next) => {
     res.locals.genreAdditionSuccessful = req.flash('genreAdditionSuccessful');
     res.locals.genreDeletionSuccessful = req.flash('genreDeletionSuccessful');
     res.locals.duplicateGenreAdditionFailed = req.flash('duplicateGenreAdditionFailed');
+    res.locals.userDeletionSuccessful = req.flash('userDeletionSuccessful');
+    res.locals.userMadeAdmin = req.flash('userMadeAdmin');
+    res.locals.userMadeNonAdmin = req.flash('userMadeNonAdmin');
     
     next();
 });
@@ -72,6 +78,7 @@ app.use('/', require('./routes/home/main'));
 app.use('/admin', require('./routes/admin/main'));
 app.use('/admin/movies', require('./routes/admin/movies'));
 app.use('/admin/genres', require('./routes/admin/genres'));
+app.use('/admin/view-users', require('./routes/admin/users'));
 app.use('/home/movies', require('./routes/home/movies'));
 
 
