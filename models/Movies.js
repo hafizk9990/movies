@@ -52,10 +52,6 @@ let moviesSchema =
     },
     reviews: [ // an array of objects. Each object is a signel review of the movie
         {
-            reviewId: {
-                type: Number,
-                required: true
-            },
             reviewTitle: {
                 type: String, 
                 required: true
@@ -81,6 +77,10 @@ let moviesSchema =
                 required: true
             }, 
             reviewDateCreated: {
+                type: String, 
+                required: true
+            }, 
+            reviewTimeCreated: {
                 type: String, 
                 required: true
             }

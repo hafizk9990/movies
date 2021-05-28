@@ -33,6 +33,20 @@ app.use(sessions({
 }));
 
 
+// overriding request methods of to get put and delete functionality
+app.use( (req, res, next) => {
+    if (req.query._method == 'DELETE') {
+        req.method = 'DELETE';
+        // req.url = req.path;
+    }
+    else if (req.query._method == 'PUT') {
+        req.method = 'PUT';
+        // req.url = req.path;
+    }
+    next(); 
+});
+
+
 // setting up flash response messages for movie CRUD
 app.use( (req, res, next) => {
     res.locals.movieCreationSuccessful = req.flash('movieCreationSuccessful');
@@ -48,6 +62,7 @@ app.use( (req, res, next) => {
     res.locals.userDeletionSuccessful = req.flash('userDeletionSuccessful');
     res.locals.userMadeAdmin = req.flash('userMadeAdmin');
     res.locals.userMadeNonAdmin = req.flash('userMadeNonAdmin');
+    res.locals.publicReviewAdded = req.flash('publicReviewAdded');
     
     next();
 });
@@ -73,13 +88,17 @@ app.engine('handlebars', handlebarsEngine({
 }));
 
 
-// setting up all our routes
+// setting up all our routes (admin)
 app.use('/', require('./routes/home/main'));
 app.use('/admin', require('./routes/admin/main'));
 app.use('/admin/movies', require('./routes/admin/movies'));
 app.use('/admin/genres', require('./routes/admin/genres'));
 app.use('/admin/view-users', require('./routes/admin/users'));
+// setting up all our routes (home)
 app.use('/home/movies', require('./routes/home/movies'));
+app.use('/signin', require('./routes/home/signin'));
+app.use('/signup', require('./routes/home/signup'));
+app.use('/home/movies/reviews', require('./routes/home/reviews'));
 
 
 // serving template files for home

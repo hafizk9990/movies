@@ -17,9 +17,4 @@ router.get('/view-reviews', (req, res) => {
     res.render('admin/view-reviews');
 });
 
-// // add-user (get request)
-// router.get('/add-user', (req, res) => {
-//     res.render('admin/add-user', { layout: false });
-// });
-
 module.exports = router;

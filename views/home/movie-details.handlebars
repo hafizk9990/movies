@@ -35,6 +35,9 @@
 			<div class="row">
 				<!-- title -->
 				<div class="col-12">
+                    <div style = "font-size: 25px; color: green;">
+                        {{ publicReviewAdded }}
+                    </div>
 					<h1 class="details__title"> {{ movie.name }} </h1>
 				</div>
 				<!-- end title -->
@@ -140,9 +143,15 @@
 								<div class="col-12">
 									<div class="comments">
 										<ul class="comments__list">
-											<li class="comments__item">
+											
+                                            {{!-- 
+                                                Add an each loop here
+                                                ( movie.reviews )
+                                             --}}
+                                            
+                                            <li class="comments__item">
 												<div class="comments__autor">
-													<img class="comments__avatar" src="img/user.png" alt="">
+													<img class="comments__avatar" src="/img/user.png" alt="">
 													<span class="comments__name">John Doe</span>
 													<span class="comments__time">30.08.2018, 17:53</span>
 												</div>
@@ -154,24 +163,27 @@
 													</div>
 												</div>
 											</li>
+
+
+
 										</ul>
                                         <br><br>
                                         <h1 class="details__title"> Share Your Thoughts? </h1>
-										<form action="#" class="form">
-											<input type="text" class="form__input" placeholder="Title">
-											<textarea class="form__textarea" placeholder="Review"></textarea>
-											<div class="form__slider">
-												<div class="form__slider-rating" id="slider__rating"></div>
-												<div class="form__slider-value" id="form__slider-value"></div>
-											</div>
-											<button type="button" class="form__btn"> Send </button>
+										<form action="/home/movies/reviews/{{movie._id}}?_method=PUT" method = "post" class="form">
+											<input name = "reviewTitle" type="text" class="form__input" placeholder = "Review Title" required>
+											<textarea name = "reviewBody" class="form__textarea" required placeholder = "Write Review"></textarea>
+                                            <input required name = "reviewRating" type = "number" step = "any" max = "10.0" class="form__input" placeholder = "Rating (0.0 to 10.0)">
+											{{!-- <div class="form__slider">
+                                                <div class="form__slider-rating" id="slider__rating"></div>
+                                                <div class="form__slider-value" id="form__slider-value"></div>         
+											</div> --}}
+											<button type = "submit" class="form__btn"> Send </button>
 										</form>
 									</div>
 								</div>
 								<!-- end comments -->
 							</div>
 						</div>
-
 						<div class="tab-pane fade" id="tab-3" role="tabpanel" aria-labelledby="3-tab">
 							<!-- project gallery -->
 							<div class="gallery" itemscope>

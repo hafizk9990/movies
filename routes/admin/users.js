@@ -12,19 +12,6 @@ router.all('/*', (req, res, next) => { // select everything that comes after thi
 });
 
 
-// overriding methods of put and delete
-router.use( (req, res, next) => {
-    if (req.query._method == 'DELETE') {
-        req.method = 'DELETE';
-        // req.url = req.path;
-    }
-    else if (req.query._method == 'PUT') {
-        req.method = 'PUT';
-        // req.url = req.path;
-    }
-    next(); 
-});
-
 // view-users (get request)
 router.get('/', (req, res) => {
     Users.find( {} ).lean()
@@ -46,7 +33,6 @@ router.get('/', (req, res) => {
 // 3) add ?_mehod=DELETE OR ?_methode=PUT in href or form action = ""
 // 4 add router.use() as above
 router.delete('/delete/:id', (req, res) => {
-    // res.status(200).send('Deleted ... !!');
     let userID = req.params.id;
 
     Users.findOneAndDelete( {_id: ObjectID(userID)} )
