@@ -12,9 +12,5 @@ router.get('/', (req, res) => {
     res.render('admin/page-content');
 });
 
-// view-reviews (get request)
-router.get('/view-reviews', (req, res) => {
-    res.render('admin/view-reviews');
-});
 
 module.exports = router;

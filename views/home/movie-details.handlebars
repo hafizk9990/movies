@@ -100,7 +100,7 @@
 						<!-- content tabs nav -->
 						<ul class="nav nav-tabs content__tabs" id="content__tabs" role="tablist">
 							<li class="nav-item">
-								<a class="nav-link active" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true"> Public Reviews (3dlsjflksdjf) </a>
+								<a class="nav-link active" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true"> Public Reviews ({{#countPhotos movie.reviews}} {{/countPhotos}}) </a>
 							</li>
 
 							<li class="nav-item">
@@ -143,29 +143,23 @@
 								<div class="col-12">
 									<div class="comments">
 										<ul class="comments__list">
-											
-                                            {{!-- 
-                                                Add an each loop here
-                                                ( movie.reviews )
-                                             --}}
-                                            
-                                            <li class="comments__item">
-												<div class="comments__autor">
-													<img class="comments__avatar" src="/img/user.png" alt="">
-													<span class="comments__name">John Doe</span>
-													<span class="comments__time">30.08.2018, 17:53</span>
-												</div>
-												<p class="comments__text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.</p>
-												<div class="comments__actions">
-													<div class="comments__rate">
-														<button type="button"><i class="icon ion-md-thumbs-up"></i> 121 </button>
-														<button type="button"> 7 <i class="icon ion-md-thumbs-down"></i></button>
-													</div>
-												</div>
-											</li>
-
-
-
+											{{#each movie.reviews}}
+                                                <li class="comments__item">
+                                                    <div class="comments__autor">
+                                                        <img class="comments__avatar" src="/img/user.svg" alt="">
+                                                        <span class="comments__name"> {{ reviewAuthor }}: &nbsp; {{ reviewTitle }} </span>
+                                                        <span style = "color: #ff55a5;" class="comments__time"> {{#dateHelper reviewDateCreated}} {{/dateHelper}} | {{ reviewTimeCreated }} </span>
+                                                        <span class="reviews__rating"><i class="icon ion-ios-star"></i> {{ reviewRating }} </span>
+                                                    </div>
+                                                    <p class="comments__text"> {{ reviewContent }} </p>
+                                                    <div class="comments__actions">
+                                                        <div class="comments__rate">
+                                                            <button type="button"><i class="icon ion-md-thumbs-up"></i> {{ reviewLiked }} </button>
+                                                            <button type="button"> {{ reviewDisliked }} <i class="icon ion-md-thumbs-down"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            {{/each}}
 										</ul>
                                         <br><br>
                                         <h1 class="details__title"> Share Your Thoughts? </h1>

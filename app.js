@@ -6,13 +6,12 @@ const bp = require('body-parser'); // this boy is deprecated. Now, we use expres
 const { select, select2, forOtherImagesofViewMovies, 
     forEditMovies, genreForMovieDetails, moviePhotoRequest, 
     countPhotos, visibilityStatus, generateHomeGenreNamesDynamicallyforNonMobile,
-    generateHomeGenreNamesDynamicallyforMobile, generateHomeMoviesDynamically
-} = require('./helper/handlebars-helpers');
+    generateHomeGenreNamesDynamicallyforMobile, generateHomeMoviesDynamically,
+    dateHelper} = require('./helper/handlebars-helpers');
 const uploadFiles = require('express-fileupload');
 const sessions = require('express-session');
 const flash = require('connect-flash');
 const methodOverride = require('method-override');
-
 
 
 // creating server
@@ -35,14 +34,10 @@ app.use(sessions({
 
 // overriding request methods of to get put and delete functionality
 app.use( (req, res, next) => {
-    if (req.query._method == 'DELETE') {
+    if (req.query._method == 'DELETE')
         req.method = 'DELETE';
-        // req.url = req.path;
-    }
-    else if (req.query._method == 'PUT') {
+    else if (req.query._method == 'PUT') 
         req.method = 'PUT';
-        // req.url = req.path;
-    }
     next(); 
 });
 
@@ -63,6 +58,7 @@ app.use( (req, res, next) => {
     res.locals.userMadeAdmin = req.flash('userMadeAdmin');
     res.locals.userMadeNonAdmin = req.flash('userMadeNonAdmin');
     res.locals.publicReviewAdded = req.flash('publicReviewAdded');
+    res.locals.reviewDeletionSuccessful = req.flash('reviewDeletionSuccessful');
     
     next();
 });
@@ -84,6 +80,7 @@ app.engine('handlebars', handlebarsEngine({
         generateHomeGenreNamesDynamicallyforNonMobile: generateHomeGenreNamesDynamicallyforNonMobile,
         generateHomeGenreNamesDynamicallyforMobile: generateHomeGenreNamesDynamicallyforMobile,
         generateHomeMoviesDynamically: generateHomeMoviesDynamically,
+        dateHelper: dateHelper,
     }
 }));
 
@@ -94,6 +91,7 @@ app.use('/admin', require('./routes/admin/main'));
 app.use('/admin/movies', require('./routes/admin/movies'));
 app.use('/admin/genres', require('./routes/admin/genres'));
 app.use('/admin/view-users', require('./routes/admin/users'));
+app.use('/admin/view-reviews', require('./routes/admin/reviews'));
 // setting up all our routes (home)
 app.use('/home/movies', require('./routes/home/movies'));
 app.use('/signin', require('./routes/home/signin'));

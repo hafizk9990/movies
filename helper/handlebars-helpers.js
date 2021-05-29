@@ -86,6 +86,25 @@ module.exports = {
             </li>
         `);
     },
+    dateHelper: function (date, options) {
+        let dateMonthYear = date.split('.');
+        let monthName = '';
+        dateMonthYear[1] == 1? monthName = 'January':
+        dateMonthYear[1] == 2? monthName = 'February':
+        dateMonthYear[1] == 3? monthName = 'March':
+        dateMonthYear[1] == 4? monthName = 'April':
+        dateMonthYear[1] == 5? monthName = 'May':
+        dateMonthYear[1] == 6? monthName = 'June':
+        dateMonthYear[1] == 7? monthName = 'July':
+        dateMonthYear[1] == 8? monthName = 'August':
+        dateMonthYear[1] == 9? monthName = 'September':
+        dateMonthYear[1] == 10? monthName = 'October':
+        dateMonthYear[1] == 11? monthName = 'November':
+        dateMonthYear[1] == 12? monthName = 'December':
+        'foo'
+
+        return(`${ monthName } ${ dateMonthYear[0] }, ${ dateMonthYear[2] }`);
+    },
     generateHomeMoviesDynamically: function(tabNumber, genreObject, options) {
         return(
             `<div class="tab-pane fade" id="tab-${tabNumber+2}" role="tabpanel" aria-labelledby="${tabNumber+2}-tab">
