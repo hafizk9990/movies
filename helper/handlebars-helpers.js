@@ -106,7 +106,12 @@ module.exports = {
         return(`${ monthName } ${ dateMonthYear[0] }, ${ dateMonthYear[2] }`);
     },
     movieRating: function(rating, totalRatings, options) {
-        return( Math.round(parseFloat(rating / totalRatings) * 10) / 10 ); // rounding off to 1 DP
+        if (parseFloat(rating) > 0) {
+            return( Math.round(parseFloat(rating / totalRatings) * 10) / 10 ); // rounding off to 1 DP
+        }
+        else {
+            return 0.0;
+        }
     },
     generateHomeMoviesDynamically: function(tabNumber, genreObject, options) {
         return(
