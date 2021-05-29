@@ -105,6 +105,9 @@ module.exports = {
 
         return(`${ monthName } ${ dateMonthYear[0] }, ${ dateMonthYear[2] }`);
     },
+    movieRating: function(rating, totalRatings, options) {
+        return( Math.round(parseFloat(rating / totalRatings) * 10) / 10 ); // rounding off to 1 DP
+    },
     generateHomeMoviesDynamically: function(tabNumber, genreObject, options) {
         return(
             `<div class="tab-pane fade" id="tab-${tabNumber+2}" role="tabpanel" aria-labelledby="${tabNumber+2}-tab">

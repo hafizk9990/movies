@@ -35,7 +35,11 @@ let moviesSchema =
         required: true
     }, 
     rating: {
-        type: String, 
+        type: String, // this will be parsed to float later on (cannot store float in DB)
+        required: true
+    },  
+    totalNumberOfRatings: {
+        type: Number, 
         required: true
     },  
     totalReviews: {

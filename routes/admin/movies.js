@@ -88,7 +88,8 @@ router.post('/add-movie', (req, res) => {
         rating: "0.0",
         totalReviews: 0, 
         poster: req.files.movie_poster.name, 
-        photos: photosArray
+        photos: photosArray, 
+        totalNumberOfRatings: 0
     });
 
     // if (incomingData.movie_genres) {
@@ -174,10 +175,11 @@ router.post('/edit-movie/:id', (req, res) => {
         videoLink: incomingData.youtube_video.replace('/watch?v=', '/embed/'),
         genre: incomingData.movie_genres,
         visibility: incomingData.visibility_status == 'Yes'? 1 : 0,
-        rating: "0.0",
-        totalReviews: 0, 
+        // rating: 0.0, // don't want to touch this field in editing
+        // totalReviews: 0, // don't wanna touch it
         poster: req.files.movie_poster.name, 
-        photos: photosArray
+        photos: photosArray, 
+        // totalNumberOfRatings: 0 // don't wanna touch this field while editing
     };
     Movies.findOneAndUpdate( {_id: ObjectID(id) }, dataToUpdate).lean()
     .then( (updatedMovie) => {

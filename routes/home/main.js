@@ -33,7 +33,11 @@ router.get('/home', (req, res) => {
     .then( (allMovies) => {
         Genres.find( {} ).lean().then( (allGenres) => {
             let topSevenMovies = [];
-            for (let i = 0; i < 7; i++) { topSevenMovies[i] = allMovies[i] }
+            for (let i = 0; i < 7; i++) { 
+                if (allMovies[i]) {
+                    topSevenMovies[i] = allMovies[i];
+                } 
+            }
 
             res.render('home/page-content', {
             movies: allMovies,

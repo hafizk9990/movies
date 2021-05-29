@@ -7,7 +7,7 @@ const { select, select2, forOtherImagesofViewMovies,
     forEditMovies, genreForMovieDetails, moviePhotoRequest, 
     countPhotos, visibilityStatus, generateHomeGenreNamesDynamicallyforNonMobile,
     generateHomeGenreNamesDynamicallyforMobile, generateHomeMoviesDynamically,
-    dateHelper} = require('./helper/handlebars-helpers');
+    dateHelper, movieRating} = require('./helper/handlebars-helpers');
 const uploadFiles = require('express-fileupload');
 const sessions = require('express-session');
 const flash = require('connect-flash');
@@ -81,6 +81,7 @@ app.engine('handlebars', handlebarsEngine({
         generateHomeGenreNamesDynamicallyforMobile: generateHomeGenreNamesDynamicallyforMobile,
         generateHomeMoviesDynamically: generateHomeMoviesDynamically,
         dateHelper: dateHelper,
+        movieRating: movieRating,
     }
 }));
 
