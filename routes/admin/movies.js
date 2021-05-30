@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Movies = require('../../models/Movies');
+const Requests = require('../../models/Requests');
 const mongoose = require('mongoose');
 const { ObjectID } = require('bson');
 
@@ -21,7 +22,13 @@ router.get('/', (req, res) => {
 router.get('/view-movies', (req, res) => {
     Movies.find( {} ).lean() // will find all movies (lean() is a handlebars thing)
     .then( (movies) => {
-        res.render('admin/view-movies', { data: movies }); // passing all the data as parameters
+        Requests.find( {} ).lean()
+        .then( (requests) => {
+            res.render('admin/view-movies', { data: movies, requests: requests }); // passing all the data as parameters
+        })
+        .catch( () => {
+            res.status(404).send('Failed to load the requests', error)
+        });
     })
     .catch( (error) => res.status(404).send('Failed to load the movies', error));
 });
@@ -200,6 +207,19 @@ router.get('/delete-movie/:id', (req, res) => {
         res.redirect('back'); 
     })
     .catch( (error) => res.status(404).send('Failed to delete the movie', error));
+});
+
+
+// delete-request (get)
+router.get('/delete-request/:id', (req, res) => {
+    let requestID = req.params.id;
+    
+    Requests.findOneAndDelete( {_id: ObjectID(requestID)} ).lean()
+    .then( (deletedRequest) => {
+        req.flash('requestDeletionSuccessful', `Request for "${ deletedRequest.movieName }" deleted successfully`);
+        res.redirect('back'); 
+    })
+    .catch( (error) => res.status(404).send('Failed to delete the request', error));
 });
 
 module.exports = router;

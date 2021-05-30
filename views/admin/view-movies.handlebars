@@ -28,6 +28,11 @@
                 <div class="col-12">
                     <div class="main__title">
                         <h2> View Movie Requests </h2>
+
+                        <div style = "font-size: 23px; color: green; margin-left: 5%; margin-top: 1%;">
+                            {{ requestDeletionSuccessful }}
+                        </div>
+
                     </div>
                 </div>
                 <!-- end main title -->
@@ -44,41 +49,40 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {{#each data}}
-                                <tr>
-                                    <td>
-                                        <div class="main__table-text"> {{ _id }} </div>
-                                    </td>
-                                    
-                                    <td>
-                                        <div class="main__table-text"> {{ name }} </div>
-                                    </td>
-                                    <td>
-                                        <div class="main__user">
-                                            <div class="main__avatar">
-                                                <img src="/img/user.svg" alt="">
+                                {{#each requests as |requests|}}
+                                    <tr>
+                                        <td>
+                                            <div class="main__table-text"> {{ requests._id }} </div>
+                                        </td>
+                                        <td>
+                                            <div class="main__table-text"> {{ requests.movieName }} </div>
+                                        </td>
+                                        <td>
+                                            <div class="main__user">
+                                                <div class="main__avatar">
+                                                    <img src="/img/user.svg" alt="">
+                                                </div>
+                                                <div class="main__meta">
+                                                    <h3> {{#createFullName requester}} {{/createFullName}} </h3>
+                                                </div>
                                             </div>
-                                            <div class="main__meta">
-                                                <h3> {{ author }} </h3>
+                                        </td>
+                                        <td>
+                                            <div class="main__table-btns">
+                                                <a href="#modal-delete-{{_id}}" class="main__table-btn main__table-btn--delete open-modal">
+                                                    <i class="icon ion-ios-trash"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                        <div id="modal-delete-{{_id}}" class="zoom-anim-dialog mfp-hide modal">
+                                            <h6 class="modal__title"> Delete Movie? </h6>
+                                            <p class="modal__text">Are you sure you want to permanently delete request for {{movieName}}?</p>
+                                            <div class="modal__btns">
+                                                <a href = "/admin/movies/delete-request/{{_id}}" class="modal__btn modal__btn--apply" type="button">Delete</a>
+                                                <button class="modal__btn modal__btn--dismiss" type="button">Dismiss</button>
                                             </div>
                                         </div>
-                                    </td>
-                                    <td>
-                                        <div class="main__table-btns">
-                                            <a href="#modal-delete-{{_id}}" class="main__table-btn main__table-btn--delete open-modal">
-												<i class="icon ion-ios-trash"></i>
-											</a>
-                                        </div>
-                                    </td>
-                                    <div id="modal-delete-{{_id}}" class="zoom-anim-dialog mfp-hide modal">
-                                        <h6 class="modal__title"> Delete Movie? </h6>
-                                        <p class="modal__text">Are you sure you want to permanently delete {{name}}?</p>
-                                        <div class="modal__btns">
-                                            <a href = "/admin/movies/delete-movie/{{_id}}" class="modal__btn modal__btn--apply" type="button">Delete</a>
-                                            <button class="modal__btn modal__btn--dismiss" type="button">Dismiss</button>
-                                        </div>
-                                    </div>
-                                </tr>
+                                    </tr>
                                 {{/each}}
                             </tbody>
                         </table>

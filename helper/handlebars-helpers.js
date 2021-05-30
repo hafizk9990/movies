@@ -110,8 +110,12 @@ module.exports = {
             return( Math.round(parseFloat(rating / totalRatings) * 10) / 10 ); // rounding off to 1 DP
         }
         else {
-            return 0.0;
+            return 'Not Rated Yet';
         }
+    },
+    createFullName: function(object, options) {
+        console.log(object);
+        return(`${ object.firstName } ${ object.lastName } | ${ object.email }`);
     },
     generateHomeMoviesDynamically: function(tabNumber, genreObject, options) {
         return(

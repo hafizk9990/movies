@@ -7,7 +7,7 @@ const { select, select2, forOtherImagesofViewMovies,
     forEditMovies, genreForMovieDetails, moviePhotoRequest, 
     countPhotos, visibilityStatus, generateHomeGenreNamesDynamicallyforNonMobile,
     generateHomeGenreNamesDynamicallyforMobile, generateHomeMoviesDynamically,
-    dateHelper, movieRating} = require('./helper/handlebars-helpers');
+    dateHelper, movieRating, createFullName} = require('./helper/handlebars-helpers');
 const uploadFiles = require('express-fileupload');
 const sessions = require('express-session');
 const flash = require('connect-flash');
@@ -59,6 +59,9 @@ app.use( (req, res, next) => {
     res.locals.userMadeNonAdmin = req.flash('userMadeNonAdmin');
     res.locals.publicReviewAdded = req.flash('publicReviewAdded');
     res.locals.reviewDeletionSuccessful = req.flash('reviewDeletionSuccessful');
+    res.locals.movieRequestAddedSuccessfully = req.flash('movieRequestAddedSuccessfully');
+    res.locals.requestedMovieRepeatedely = req.flash('requestedMovieRepeatedely');
+    res.locals.requestDeletionSuccessful = req.flash('requestDeletionSuccessful');
     
     next();
 });
@@ -82,6 +85,7 @@ app.engine('handlebars', handlebarsEngine({
         generateHomeMoviesDynamically: generateHomeMoviesDynamically,
         dateHelper: dateHelper,
         movieRating: movieRating,
+        createFullName: createFullName,
     }
 }));
 

@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const Requests = require('../../models/Requests');
 const Movies = require('../../models/Movies');
 const mongoose = require('mongoose');
 const { ObjectID } = require('bson');
@@ -27,6 +28,55 @@ router.get('/:id', (req, res) => {
         res.render('home/movie-details', { movie: data });
     })
     .catch( (error) => res.status(404).send('Failed to find the movie to edit from DB', error));
+});
+
+
+// if somebody searches for the movie using movie name
+router.post('/search', (req, res) => {
+    Movies.find( {'name': new RegExp(req.body.keyword, 'i')} ).lean()
+    .then( (movies) => {
+        if (movies.length > 0) {
+            res.render('home/search-results', { data: movies });
+        }
+        else {
+            res.render('home/search-results-not-found', { requestedMovie: req.body.keyword });
+        }
+    }).catch( (error) => {
+        res.status(400).send(error);
+    })
+});
+
+
+// if somebody requests for the movie using movie name
+router.get('/add-movie-request/:name', (req, res) => {
+    Requests.findOne( { movieName: req.params.name } )
+    .then( (movie) => {
+        if (!movie) {
+            let dataToSave = new Requests({
+                movieName: req.params.name,
+                requester: {
+                    firstName: 'Anonymous', 
+                    lastName: 'User', 
+                    email: 'anonymousUser@email.com'
+                }
+            });
+            dataToSave.save()
+            .then( (success) => {
+                req.flash('movieRequestAddedSuccessfully', `We are reviewing your request for "${ success.movieName }." Please be patient while we process it. Thank you!`);
+                res.redirect('/home');
+            })
+            .catch( (error) => {
+                res.status(400).send('Failed to add movie request', error);
+            });
+        }
+        else {
+            req.flash('requestedMovieRepeatedely', `We have already received a request for "${ req.params.name }." We are working on it. Thank you!`);
+            res.redirect('/home');
+        }
+    })
+    .catch( (error) => {
+        res.status(200).send('Something went wrong', error);
+    });
 });
 
 
