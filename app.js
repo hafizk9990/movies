@@ -3,11 +3,13 @@ const handlebarsEngine = require('express-handlebars');
 const Handlebars = require('handlebars');
 require('./mongodb/db');
 const bp = require('body-parser'); // this boy is deprecated. Now, we use express.json() and express.urlencoded( {} )
-const { select, select2, forOtherImagesofViewMovies, 
+const { 
+    select, select2, forOtherImagesofViewMovies, 
     forEditMovies, genreForMovieDetails, moviePhotoRequest, 
     countPhotos, visibilityStatus, generateHomeGenreNamesDynamicallyforNonMobile,
     generateHomeGenreNamesDynamicallyforMobile, generateHomeMoviesDynamically,
-    dateHelper, movieRating, createFullName} = require('./helper/handlebars-helpers');
+    dateHelper, movieRating, createFullName
+} = require('./helper/handlebars-helpers');
 const uploadFiles = require('express-fileupload');
 const sessions = require('express-session');
 const flash = require('connect-flash');
@@ -42,7 +44,7 @@ app.use( (req, res, next) => {
 });
 
 
-// setting up flash response messages for movie CRUD
+// setting up flash response messages
 app.use( (req, res, next) => {
     res.locals.movieCreationSuccessful = req.flash('movieCreationSuccessful');
     res.locals.movieDeletionSuccessful = req.flash('movieDeletionSuccessful');

@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const Movies = require('../../models/Movies');
+// const Reviews = require('../../models/Reviews');
 const Genres = require('../../models/Genres');
 const Users = require('../../models/Users');
 const mongoose = require('mongoose');
-const { ObjectID } = require('bson');
+const { ObjectID, ObjectId } = require('bson');
 const crypto = require('crypto');
 const { update } = require('../../models/Movies');
 
@@ -74,4 +75,21 @@ router.put('/:id', (req, res) => {
     }); 
 });
 
-module.exports = router
+router.get('/vote/:voteID', (req, res) => {
+    const [voteValue, reviewID, movieID] = req.params.voteID.split('*');
+    
+    Movies.findOne( {_id: ObjectID(movieID)} )
+    .then( (movie) => {
+        let reviewExtracted = movie.reviews.find(x => x._id == reviewID); // returns back pointer to the object in the original array (movie.reviews)
+        voteValue == 'up' ? reviewExtracted.reviewLiked++ : reviewExtracted.reviewDisliked++; // updates (via pointer) the actual array's object
+        Movies.findOneAndUpdate({ _id: ObjectID(movieID) }, {
+            $set: { reviews: movie.reviews } // set overwrites everything and sets new updated value (don't always set) 
+        }).then( () => {
+            res.status(200).send('Thumbs updated successfully');
+        }).catch( (error) => {
+            res.status(400).send(error);
+        });
+    });
+});
+
+module.exports = router;
