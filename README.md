@@ -296,7 +296,7 @@ Method overriding has also been implemented for the sake of accessing router.put
 ```
 Afterwards, whenvever you send a request, you add the following code at the end of the href URL or the form action URL:
 ```html
-  _?method=DELETE or _?method=PUT
+  "_?method=DELETE" or "_?method=PUT"
 ```
 That's it
 
