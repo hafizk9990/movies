@@ -38,11 +38,11 @@ Remember, app.js is the entry point for the project
 ## ExpressJS – Serving Static Files
 This part is very easy; using ExpressJS framework, we serve the bootstrap files. The basic syntax
 used is: 
-``` javascript
+```javascript
   app.use('/css', express.static('./public/home/css'));
 ```
  for the home and 
- ``` javascript
+ ```javascript
   app.use('/css', express.static('./public/admin/css'));
 ```
 for the admin. Hence, we created a middleware and served
