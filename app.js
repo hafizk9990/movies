@@ -8,12 +8,13 @@ const {
     forEditMovies, genreForMovieDetails, moviePhotoRequest, 
     countPhotos, visibilityStatus, generateHomeGenreNamesDynamicallyforNonMobile,
     generateHomeGenreNamesDynamicallyforMobile, generateHomeMoviesDynamically,
-    dateHelper, movieRating, createFullName
+    dateHelper, movieRating, createFullName, generateHomeLatestReviews, // peopleAlsoLike
 } = require('./helper/handlebars-helpers');
 const uploadFiles = require('express-fileupload');
 const sessions = require('express-session');
 const flash = require('connect-flash');
 const methodOverride = require('method-override');
+// const passport = require('passport');
 
 
 // creating server
@@ -32,6 +33,8 @@ app.use(sessions({
     resave: true,
     saveUninitialized: true, 
 }));
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 
 // overriding request methods of to get put and delete functionality
@@ -88,6 +91,8 @@ app.engine('handlebars', handlebarsEngine({
         dateHelper: dateHelper,
         movieRating: movieRating,
         createFullName: createFullName,
+        generateHomeLatestReviews: generateHomeLatestReviews,
+        // peopleAlsoLike: peopleAlsoLike,
     }
 }));
 

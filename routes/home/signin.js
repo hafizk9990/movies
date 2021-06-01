@@ -6,6 +6,8 @@ const Users = require('../../models/Users');
 const mongoose = require('mongoose');
 const { ObjectID } = require('bson');
 const crypto = require('crypto');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
 
 // Making sure that if you come to this file from admin, you do not inherit admin's layout, rather you fall back on default layout which for home
 router.all('/*', (req, res, next) => { // select everything that comes after this route (localhost:64000/home/)
@@ -21,7 +23,7 @@ router.get('/', (req, res) => {
 
 
 // sign-in (post)
-router.post('/', (req, res) => {
+router.post('/', (req, res, next) => {
     Users.findOne({ email: req.body.email }).then( (user) => {
         if (crypto.createHash('sha256').update(req.body.pass).digest('base64') == user.password) {
             if (user.userType == 'Non-Admin') {
@@ -33,6 +35,8 @@ router.post('/', (req, res) => {
             else if (user.userType == 'Admin') {
                 req.session.email = req.body.email;
                 req.session.role = 'Admin';
+
+                // req.session.cookie = '12345';
 
                 res.redirect('/admin');
             }

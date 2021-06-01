@@ -31,14 +31,14 @@ router.get('/home/faq', (req, res) => {
 router.get('/home', (req, res) => {
     Movies.find( {} ).lean()
     .then( (allMovies) => {
+        global.allMovies = allMovies;
         Genres.find( {} ).lean().then( (allGenres) => {
             let topSevenMovies = [];
             for (let i = 0; i < 7; i++) { 
                 if (allMovies[i]) {
                     topSevenMovies[i] = allMovies[i];
-                } 
+                }
             }
-
             res.render('home/page-content', {
             movies: allMovies,
             carouselData: topSevenMovies,
@@ -52,5 +52,4 @@ router.get('/home', (req, res) => {
     });
 });
 
-
-module.exports = router
+module.exports = router;

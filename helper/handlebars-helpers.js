@@ -117,57 +117,77 @@ module.exports = {
         console.log(object);
         return(`${ object.firstName } ${ object.lastName } | ${ object.email }`);
     },
-    generateHomeMoviesDynamically: function(tabNumber, genreObject, options) {
-        return(
-            `<div class="tab-pane fade" id="tab-${tabNumber+2}" role="tabpanel" aria-labelledby="${tabNumber+2}-tab">
-                <div class="row">
-                    <!-- card -->
-                    <div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+    generateHomeMoviesDynamically: function(tabNumber, genreObject) {
+        let toReturn = `<div class="tab-pane fade" id="tab-${tabNumber+2}" role="tabpanel" aria-labelledby="${tabNumber+2}-tab">
+        <div class="row">`;
+        
+        if (global.allMovies) {
+            for (let i = 0; i < global.allMovies.length; i++) {
+                if (global.allMovies[i].genre.includes(genreObject.name)) {
+                    toReturn +=
+                    `<div class="col-6 col-sm-4 col-lg-3 col-xl-2">
                         <div class="card">
                             <div class="card__cover">
-                                <img src="img/covers/cover.jpg" alt="">
-                                <a href="#" class="card__play">
+                                <img src="/posters/${ global.allMovies[i].poster }" alt="">
+                                <a href="/home/movies/${ global.allMovies[i]._id }" class="card__play">
                                     <i class="icon ion-ios-play"></i>
                                 </a>
                             </div>
                             <div class="card__content">
-                                <h3 class="card__title"><a href="#"> You dream, I dream, we dream </a></h3>
-                                <span class="card__category">
-                                    <a href="#">Action</a>
-                                    <a href="#">Triler</a>
-                                </span>
-                                <span class="card__rate"><i class="icon ion-ios-star"></i>8.4</span>
+                                <h3 class="card__title"><a href="/home/movies/${ global.allMovies[i]._id }"> ${ global.allMovies[i].name } </a></h3>
+                                <span class="card__rate"><i class="icon ion-ios-star"></i> ${ Math.round(global.allMovies[i].rating / global.allMovies[i].totalNumberOfRatings * 10) / 10 } </span>
                             </div>
                         </div>
-                    </div>
-                    <!-- end card -->
-
-
-
-                    <!-- card -->
-                    <div class="col-6 col-sm-4 col-lg-3 col-xl-2">
-                        <div class="card">
+                    </div>`
+                }
+            }
+        }
+        toReturn += `</div></div>`
+        return(toReturn);
+    },
+    generateHomeLatestReviews: (carouselData) => {
+        let toReturn = ``;
+        for (let i = carouselData.length - 1; i >= 0; i--) {
+            toReturn +=
+            `<!-- card -->
+            <div class="col-6 col-sm-12 col-lg-6">
+                <div class="card card--list">
+                    <div class="row">
+                        <div class="col-12 col-sm-4">
                             <div class="card__cover">
-                                <img src="img/covers/cover.jpg" alt="">
-                                <a href="#" class="card__play">
+                                <img src="/posters/${ carouselData[i].poster }" alt="">
+                                <a href="/home/movies/${ carouselData[i]._id }" class="card__play">
                                     <i class="icon ion-ios-play"></i>
                                 </a>
                             </div>
+                        </div>
+                        <div class="col-12 col-sm-8">
                             <div class="card__content">
-                                <h3 class="card__title"><a href="#"> You dream, I dream, We dream </a></h3>
+                                <h3 class="card__title"><a href="/home/movies/${ carouselData[i]._id }"> ${ carouselData[i].name } </a></h3>
                                 <span class="card__category">
-                                    <a href="#">Action</a>
-                                    <a href="#">Triler</a>
+                                    <a> ${ carouselData[i].genre } </a>
                                 </span>
-                                <span class="card__rate"><i class="icon ion-ios-star"></i>8.4</span>
+
+                                <div class="card__wrap">
+                                    <span class="card__rate"><i class="icon ion-ios-star"></i> ${ Math.round(carouselData[i].rating / carouselData[i].totalNumberOfRatings * 10) / 10 } </span>
+
+                                    <ul class="card__list">
+                                        <li> ${ carouselData[i].videoQuality } </li>
+                                        <li>16+</li>
+                                    </ul>
+                                </div>
+                                <div class="card__description">
+                                    <p>
+                                        ${ carouselData[i].description }
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <!-- end card -->
-
-
                 </div>
             </div>`
-        );
+        }
+        
+        return(toReturn);
     }
 }
