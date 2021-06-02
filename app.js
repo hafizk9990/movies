@@ -14,7 +14,6 @@ const uploadFiles = require('express-fileupload');
 const sessions = require('express-session');
 const flash = require('connect-flash');
 const methodOverride = require('method-override');
-// const passport = require('passport');
 
 
 // creating server

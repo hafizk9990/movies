@@ -29,7 +29,7 @@ router.get('/home/faq', (req, res) => {
 
 // homepage
 router.get('/home', (req, res) => {
-    Movies.find( {} ).lean()
+    Movies.find( {$where: function() { return (this.visibility == true) }} ).lean()
     .then( (allMovies) => {
         global.allMovies = allMovies;
         Genres.find( {} ).lean().then( (allGenres) => {

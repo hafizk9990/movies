@@ -91,7 +91,7 @@ router.post('/add-movie', (req, res) => {
         yearReleased: incomingData.year, 
         videoLink: incomingData.youtube_video.replace('/watch?v=', '/embed/'),
         genre: incomingData.movie_genres,
-        visibility: incomingData.visibility_status == 'Yes'? 1 : 0,
+        visibility: incomingData.visibility_status == 'Yes' || 'yes' ? 1 : 0,
         rating: "0.0",
         totalReviews: 0, 
         poster: req.files.movie_poster.name, 
@@ -181,7 +181,7 @@ router.post('/edit-movie/:id', (req, res) => {
         yearReleased: incomingData.year, 
         videoLink: incomingData.youtube_video.replace('/watch?v=', '/embed/'),
         genre: incomingData.movie_genres,
-        visibility: incomingData.visibility_status == 'Yes'? 1 : 0,
+        visibility: incomingData.visibility_status == 'Yes' || 'yes' ? 1 : 0,
         // rating: 0.0, // don't want to touch this field in editing
         // totalReviews: 0, // don't wanna touch it
         poster: req.files.movie_poster.name, 

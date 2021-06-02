@@ -20,7 +20,7 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="author" content="Dmitry Volkov">
-    <title> Movies - Search </title>
+    <title> All Movies </title>
 </head>
 
 <body class="body">
@@ -29,7 +29,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="section__wrap">
-                        <h2 class="section__title"> Your Search Results </h2>
+                        <h2 class="section__title"> All Movies (Complete Catalogue) </h2>
                     </div>
                 </div>
             </div>
@@ -39,8 +39,8 @@
     <div class="catalog">
         <div class="container">
             <div class="row">
-                {{#each data}} 
-                    <div class="col-6 col-sm-4 col-lg-3 col-xl-2">
+                {{#each catalog}} 
+                        <div class="col-6 col-sm-4 col-lg-3 col-xl-2">
                         <div class="card">
                             <div class="card__cover">
                                 <img src="/posters/{{poster}}" alt="">

@@ -13,8 +13,15 @@ router.all('/*', (req, res, next) => { // select everything that comes after thi
 });
 
 
+// /home/movies
 router.get('/', (req, res) => {
-    res.status(200).send('All movies are here');
+    
+    Movies.find( {$where: function() { return (this.visibility == true) } } ).lean()
+    .then( (allMovies) => {
+        res.render('home/catalog-results', { catalog: allMovies });
+    }).catch( (error) => {
+        res.status(400).send('Something went wrong', error);
+    });
 });
 
 
@@ -25,7 +32,13 @@ router.get('/:id', (req, res) => {
     // fetching the movie by ID from the DB
     Movies.findOne({_id: ObjectID(movieID)}).lean()
     .then( (data) => {
-        res.render('home/movie-details', { movie: data });
+        Movies.find().sort( {_id: -1} ).limit(4).lean() // oldest to newest
+        .then( (fourMovies) => {
+            console.log(fourMovies);
+            res.render('home/movie-details', { movie: data, peopleAlsoSearch: fourMovies });
+        }).catch( (error) => {
+            res.status(400).send('Could not find four movies', error);
+        });
     })
     .catch( (error) => res.status(404).send('Failed to find the movie to edit from DB', error));
 });
