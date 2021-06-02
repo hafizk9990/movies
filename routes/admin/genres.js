@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
         res.render('admin/genres', { data: allGenres });
     })
     .catch( (error) => {
-        res.status(404).send('Genres not found', error);
+        res.render('errors/server', { exactError: error });
     });
     // }
     // else {
@@ -40,7 +40,7 @@ router.get('/delete-genre/:id', (req, res) => {
         res.redirect('back');
     })
     .catch( (error) => {
-        res.status(404).send(error);
+        res.render('errors/server', { exactError: error });
     });
 });
 
@@ -57,7 +57,7 @@ router.post('/', (req, res) => {
                 req.flash('genreAdditionSuccessful', `Successfully added genre "${ success.name }"`);
                 res.redirect('back');
             }).catch( (error) => {
-                console.log(`Failed to add genre`, error);
+                res.render('errors/server', { exactError: error });
             });
         } 
         else {
@@ -65,7 +65,7 @@ router.post('/', (req, res) => {
             res.redirect('back');
         }
     }).catch( (error) => {
-        res.status(404).send('Something went wrong. The whole process failed', error);
+        res.render('errors/server', { exactError: error });
     });
 });
 

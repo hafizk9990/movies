@@ -41,7 +41,7 @@ router.delete('/delete/:id', (req, res) => {
         res.redirect('back');
     })
     .catch( (error) => {
-        res.status(400).send('Something went wrong. Could not delete', error);
+        res.render('errors/server', { exactError: error });
     });
 });
 
@@ -56,7 +56,7 @@ router.put('/update-admin/:id', (req, res) => {
         res.redirect('back');
     })
     .catch( (error) => {
-        res.status(400).send('Could not change user permissions to admin. Something went wrong', error);
+        res.render('errors/server', { exactError: error });
     });
 });
 
@@ -71,7 +71,7 @@ router.put('/update-non-admin/:id', (req, res) => {
         res.redirect('back');
     })
     .catch( (error) => {
-        res.status(400).send('Could not change user permissions to admin. Something went wrong', error);
+        res.render('errors/server', { exactError: error });
     });
 });
 

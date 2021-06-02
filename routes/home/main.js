@@ -44,11 +44,11 @@ router.get('/home', (req, res) => {
             carouselData: topSevenMovies,
             genresData: allGenres
         })}).catch( (error) => {
-            res.status(404).send('Could not find genres', error);
+            res.render('errors/server', { exactError: error });
         });
     })
     .catch( (error) => {
-        res.status(404).send('Could not find top 6 movies for the carousal', error);
+        res.render('errors/server', { exactError: error });
     });
 });
 

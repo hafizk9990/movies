@@ -68,10 +68,10 @@ router.put('/:id', (req, res) => {
             });
         })
         .catch( (error) => {
-            res.status(400).send('Sorry, something went wrong', error);
+            res.render('errors/server', { exactError: error });
         });
     }).catch( (error) => {
-        res.status(400).send('Sorry, something went wrong', error);
+        res.render('errors/server', { exactError: error });
     }); 
 });
 
@@ -87,8 +87,10 @@ router.get('/vote/:voteID', (req, res) => {
         }).then( () => {
             res.status(200).send('Thumbs updated successfully');
         }).catch( (error) => {
-            res.status(400).send(error);
+            res.render('errors/server', { exactError: error });
         });
+    }).catch( (error) => {
+        res.render('errors/server', { exactError: error });
     });
 });
 

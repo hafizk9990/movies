@@ -20,7 +20,7 @@ router.get('/', (req, res) => {
     .then( (allMovies) => {
         res.render('home/catalog-results', { catalog: allMovies });
     }).catch( (error) => {
-        res.status(400).send('Something went wrong', error);
+        res.render('errors/server', { exactError: error });
     });
 });
 
@@ -32,15 +32,16 @@ router.get('/:id', (req, res) => {
     // fetching the movie by ID from the DB
     Movies.findOne({_id: ObjectID(movieID)}).lean()
     .then( (data) => {
-        Movies.find().sort( {_id: -1} ).limit(4).lean() // oldest to newest
+        Movies.find( {$where: function() { return (this.visibility == true) } } ).sort( {_id: -1} ).limit(4).lean() // oldest to newest
         .then( (fourMovies) => {
-            console.log(fourMovies);
             res.render('home/movie-details', { movie: data, peopleAlsoSearch: fourMovies });
         }).catch( (error) => {
-            res.status(400).send('Could not find four movies', error);
+            res.render('errors/server', { exactError: error });
         });
     })
-    .catch( (error) => res.status(404).send('Failed to find the movie to edit from DB', error));
+    .catch( (error) => {
+        res.render('errors/server', { exactError: error });
+    });
 });
 
 
@@ -55,7 +56,7 @@ router.post('/search', (req, res) => {
             res.render('home/search-results-not-found', { requestedMovie: req.body.keyword });
         }
     }).catch( (error) => {
-        res.status(400).send(error);
+        res.render('errors/server', { exactError: error });
     })
 });
 
@@ -79,7 +80,7 @@ router.get('/add-movie-request/:name', (req, res) => {
                 res.redirect('/home');
             })
             .catch( (error) => {
-                res.status(400).send('Failed to add movie request', error);
+                res.render('errors/server', { exactError: error });
             });
         }
         else {
@@ -88,7 +89,7 @@ router.get('/add-movie-request/:name', (req, res) => {
         }
     })
     .catch( (error) => {
-        res.status(200).send('Something went wrong', error);
+        res.render('errors/server', { exactError: error });
     });
 });
 

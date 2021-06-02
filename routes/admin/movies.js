@@ -26,11 +26,13 @@ router.get('/view-movies', (req, res) => {
         .then( (requests) => {
             res.render('admin/view-movies', { data: movies, requests: requests }); // passing all the data as parameters
         })
-        .catch( () => {
-            res.status(404).send('Failed to load the requests', error)
+        .catch( (error) => {
+            res.render('errors/server', { exactError: error });
         });
     })
-    .catch( (error) => res.status(404).send('Failed to load the movies', error));
+    .catch( (error) => {
+        res.render('errors/server', { exactError: error });
+    });
 });
 
 
@@ -91,7 +93,7 @@ router.post('/add-movie', (req, res) => {
         yearReleased: incomingData.year, 
         videoLink: incomingData.youtube_video.replace('/watch?v=', '/embed/'),
         genre: incomingData.movie_genres,
-        visibility: incomingData.visibility_status == 'Yes' || 'yes' ? 1 : 0,
+        visibility: incomingData.visibility_status == 'Yes' ? 1 : 0,
         rating: "0.0",
         totalReviews: 0, 
         poster: req.files.movie_poster.name, 
@@ -132,7 +134,9 @@ router.get('/edit-movie/:id', (req, res) => {
             movie: data
         });
     })
-    .catch( (error) => res.status(404).send('Failed to find the movie to edit from DB', error));
+    .catch( (error) => {
+        res.render('errors/server', { exactError: error });
+    });
 });
 
 
@@ -181,7 +185,7 @@ router.post('/edit-movie/:id', (req, res) => {
         yearReleased: incomingData.year, 
         videoLink: incomingData.youtube_video.replace('/watch?v=', '/embed/'),
         genre: incomingData.movie_genres,
-        visibility: incomingData.visibility_status == 'Yes' || 'yes' ? 1 : 0,
+        visibility: incomingData.visibility_status == 'Yes' ? 1 : 0,
         // rating: 0.0, // don't want to touch this field in editing
         // totalReviews: 0, // don't wanna touch it
         poster: req.files.movie_poster.name, 
@@ -193,7 +197,9 @@ router.post('/edit-movie/:id', (req, res) => {
         req.flash('movieUpdationSuccessful', `${ updatedMovie.name } updated successfully`);
         res.redirect('/admin/movies/view-movies');
     })
-    .catch( (error) => res.status(404).send('Failed to Update the Movie', error));
+    .catch( (error) => {
+        res.render('errors/server', { exactError: error });
+    });
 });
 
 
@@ -205,8 +211,9 @@ router.get('/delete-movie/:id', (req, res) => {
     .then( (deletedMovie) => {
         req.flash('movieDeletionSuccessful', `${ deletedMovie.name } deleted successfully`);
         res.redirect('back'); 
-    })
-    .catch( (error) => res.status(404).send('Failed to delete the movie', error));
+    }).catch( (error) => {
+        res.render('errors/server', { exactError: error });
+    });
 });
 
 
@@ -218,8 +225,9 @@ router.get('/delete-request/:id', (req, res) => {
     .then( (deletedRequest) => {
         req.flash('requestDeletionSuccessful', `Request for "${ deletedRequest.movieName }" deleted successfully`);
         res.redirect('back'); 
-    })
-    .catch( (error) => res.status(404).send('Failed to delete the request', error));
+    }).catch( (error) => {
+        res.render('errors/server', { exactError: error });
+    });
 });
 
 module.exports = router;

@@ -39,8 +39,7 @@ router.post('/', (req, res) => {
                 res.redirect('/signin');
             })
             .catch( (error) => { 
-                console.log('NOT INSERTED', error); 
-                res.status(404).send('Sign up failed. Please try again');
+                res.render('errors/server', { exactError: error });
             });
         }
         else {
@@ -48,7 +47,7 @@ router.post('/', (req, res) => {
             res.redirect('/signin');
         }
     }).catch( (error) => {
-        req.status(404).send('Some bad thing happened. The whole process failed. Please try again', error);
+        res.render('errors/server', { exactError: error });
     });
 });
 

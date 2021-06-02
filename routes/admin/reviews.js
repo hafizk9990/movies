@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
         res.render('admin/view-reviews', { movies: allMovies });
     })
     .catch( (error) => {
-        res.status(400).send('Someting went wrong', error);
+        res.render('errors/server', { exactError: error });
     });
 });
 
@@ -42,8 +42,7 @@ router.delete('/delete/:id', (req, res) => {
         req.flash('reviewDeletionSuccessful', `Successfully deleted movie review`);
         res.redirect('back');
     }).catch( (error) => {
-        console.log('bar');
-        res.status(400).send('Error deleting review', error);
+        res.render('errors/server', { exactError: error });
     });
 });
 

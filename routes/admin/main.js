@@ -28,16 +28,16 @@ router.get('/', async (req, res) => {
                         totalUsers: totalUsers
                     });
                 }).catch( (error) => {
-                    res.status(404).send('Could not count requests');
+                    res.render('errors/server', { exactError: error });
                 });
             }).catch( (error) => {
-                res.status(404).send('Could not count users');
+                res.render('errors/server', { exactError: error });
             });
         }).catch( (error) => {
-            res.status(404).send('Could not count gernes');
+            res.render('errors/server', { exactError: error });
         });
     }).catch( (error) => {
-        res.status(404).send('Could not count movies');
+        res.render('errors/server', { exactError: error });
     });
 });
 

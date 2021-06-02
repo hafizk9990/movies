@@ -32,9 +32,6 @@ app.use(sessions({
     resave: true,
     saveUninitialized: true, 
 }));
-// app.use(passport.initialize());
-// app.use(passport.session());
-
 
 // overriding request methods of to get put and delete functionality
 app.use( (req, res, next) => {
@@ -91,7 +88,6 @@ app.engine('handlebars', handlebarsEngine({
         movieRating: movieRating,
         createFullName: createFullName,
         generateHomeLatestReviews: generateHomeLatestReviews,
-        // peopleAlsoLike: peopleAlsoLike,
     }
 }));
 

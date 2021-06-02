@@ -147,7 +147,7 @@ module.exports = {
     },
     generateHomeLatestReviews: (carouselData) => {
         let toReturn = ``;
-        for (let i = carouselData.length - 1; i >= 0; i--) {
+        for (let i = carouselData.length - 1; i > 0; i--) {
             toReturn +=
             `<!-- card -->
             <div class="col-6 col-sm-12 col-lg-6">
