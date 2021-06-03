@@ -27,6 +27,20 @@ Afterwards, you can simply type this in your browser to run the project:
 
 Remember, you need to have NodeJS, ExpressJS, and MongoDB installed in your system. Else, you will not be able to run the project
 
+### Database Integration
+For public use, the whole databse has been exported (all four collections) and provided on GitHub in JSON format. Navigate here to access the whole database:
+
+```bash
+  mongodb/full-database/all-collections
+```
+
+You need to have MongoDB set-up on your computer system. Then, you can easily create a database, called *moviesProject* and add all the collections in it. Now, it will be connected when you run the following command in the terminal:
+
+```bash
+  mongod
+```
+
+Remember, before you run *nodejs app.js* command, you need to run the *mongod* command. Otherwise, the application will give you error, as connection with MongoDB server will not be established successfully
 
 # Project Implementation & Navigation Guide – Complete Documentation
 The purpose of this document is to help the readers of my code understand what on earth I have
