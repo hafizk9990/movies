@@ -1,0 +1,392 @@
+[{
+  "_id": {
+    "$oid": "60b8db357f7cf10d3ed78054"
+  },
+  "genre": [
+    "Drama",
+    "Mystery"
+  ],
+  "photos": [
+    "the-prestige-1.jpg",
+    "the-prestige-2.jpg",
+    "the-prestige-3.jpg",
+    "the-prestige-4.jpg",
+    "the-prestige-6.jpg"
+  ],
+  "name": "The Prestige",
+  "description": "The Prestige is a 2006 science fiction psychological thriller film directed by Christopher Nolan, written by Nolan and his brother Jonathan, based on the 1995 novel of the same name by Christopher Priest. It follows Robert Angier and Alfred Borden, rival stage magicians in London at the end of the 19th century. Obsessed with creating the best stage illusion, they engage in competitive one-upmanship, with fatal results. The film stars Hugh Jackman as Robert Angier and Christian Bale as Alfred Borden. It also stars Scarlett Johansson, Michael Caine, Piper Perabo, Andy Serkis, Rebecca Hall, and David Bowie as Nikola Tesla.",
+  "runtime": "130",
+  "videoQuality": "FullHD",
+  "yearReleased": "2006",
+  "videoLink": "https://www.youtube.com/embed/RLtaA9fFNXU",
+  "visibility": true,
+  "rating": "8.7",
+  "totalReviews": 0,
+  "poster": "prestige-poster.jpg",
+  "totalNumberOfRatings": 1,
+  "reviews": [
+    {
+      "_id": {
+        "$oid": "60b8dbe67f7cf10d3ed78055"
+      },
+      "reviewTitle": "Storytelling at its best!",
+      "reviewAuthor": "Random Author",
+      "reviewContent": "The Prestige is a masterful exercise in storytelling with superb direction and powerful performances by a grand ensemble cast. From set and production design to cinematography, from script to presentation, Christopher Nolan has once again demonstrated why he is one of the film world's brightest up and coming directors. The Prestige only helps solidify his standing as one of the landmark directors of his generation.",
+      "reviewRating": "8.7",
+      "reviewLiked": 2,
+      "reviewDisliked": 1,
+      "reviewDateCreated": "03.06.2021",
+      "reviewTimeCreated": "6:40 PM (Pakistan Standard Time)"
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b8dda97f7cf10d3ed78059"
+  },
+  "genre": [
+    "Comedy",
+    "Drama"
+  ],
+  "photos": [
+    "knives-out-1.jpg",
+    "knives-out-2.jpg",
+    "knives-out-3.jpg",
+    "knives-out-4.jpg",
+    "knives-out-5.jpeg"
+  ],
+  "name": "Knives Out",
+  "description": "Knives Out is a 2019 American mystery film written and directed by Rian Johnson, and produced by Johnson and Ram Bergman. It follows a master detective investigating the death of the patriarch of a wealthy, dysfunctional family. The film features an ensemble cast including Daniel Craig, Chris Evans, Ana de Armas, Jamie Lee Curtis, Michael Shannon, Don Johnson, Toni Collette, Lakeith Stanfield, Katherine Langford, Jaeden Martell, and Christopher Plummer.",
+  "runtime": "130",
+  "videoQuality": "BluRay",
+  "yearReleased": "2019",
+  "videoLink": "https://www.youtube.com/embed/xi-1NchUqMA",
+  "visibility": true,
+  "rating": "9.0",
+  "totalReviews": 0,
+  "poster": "knives-out-poster.jpg",
+  "totalNumberOfRatings": 1,
+  "reviews": [
+    {
+      "_id": {
+        "$oid": "60b8de157f7cf10d3ed7805a"
+      },
+      "reviewTitle": "Bravo!",
+      "reviewAuthor": "Random Author",
+      "reviewContent": "Nothing was typical about this. Everything was beautifully done in this movie, the story, the flow, the scenario, everything. I highly recommend it for mystery lovers, for anyone who wants to watch a good movie!",
+      "reviewRating": "9.0",
+      "reviewLiked": 1,
+      "reviewDisliked": 0,
+      "reviewDateCreated": "03.06.2021",
+      "reviewTimeCreated": "6:50 PM (Pakistan Standard Time)"
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b8dfc67f7cf10d3ed7805c"
+  },
+  "genre": [
+    "Drama",
+    "Thriller"
+  ],
+  "photos": [
+    "nocturnal-animals-1.jpg",
+    "nocturnal-animals-2.jpg",
+    "nocturnal-animals-3.jpg",
+    "nocturnal-animals-4.jpg",
+    "nocturnal-animals-5.jpg"
+  ],
+  "name": "Nocturnal Animals",
+  "description": "Nocturnal Animals is a 2016 American neo-noir psychological thriller[5][6] written, produced and directed by Tom Ford in his sophomore feature, based on the 1993 novel Tony and Susan by Austin Wright. The film stars Amy Adams, Jake Gyllenhaal, Michael Shannon, Aaron Taylor-Johnson, Isla Fisher, Armie Hammer, Laura Linney, Andrea Riseborough, and Michael Sheen. The plot follows an art gallery owner as she reads the new novel written by her first husband and begins to see the similarities between it and their former relationship.",
+  "runtime": "116",
+  "videoQuality": "DVDRip",
+  "yearReleased": "2016",
+  "videoLink": "https://www.youtube.com/embed/-H1Ii1LjyFU",
+  "visibility": true,
+  "rating": "9.1",
+  "totalReviews": 0,
+  "poster": "nocturnal-animals-poster.jpg",
+  "totalNumberOfRatings": 1,
+  "reviews": [
+    {
+      "_id": {
+        "$oid": "60b8e03e7f7cf10d3ed7805d"
+      },
+      "reviewTitle": "Stylish & Awesome",
+      "reviewAuthor": "Random Author",
+      "reviewContent": "Listen, I'm not a movie guru, I don't study arts, I'm just your average Joe that loves movies. I've seen lots of movies, I don't discriminate, terror, drama, action, animated you name it, I can perfectly differentiate between a bad from a good movie, I don't need the biased comments of the so called movie critics on IMDb. Thanks God I didn't pay attention to all the misguided comments about this movie, Nocturnal Animals is a beautiful & stylish movie, great photography, solid acting and a solid plot that will stay with you long after you finish it. I don't understand why there's so much envy and hate in the film industry, the wannabe movie critics can't take that a guy who came from the fashion world actually can created a pretty good movie. My fellow reader, please don't miss the chance to see this movie",
+      "reviewRating": "9.1",
+      "reviewLiked": 0,
+      "reviewDisliked": 0,
+      "reviewDateCreated": "03.06.2021",
+      "reviewTimeCreated": "6:59 PM (Pakistan Standard Time)"
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b8e1f67f7cf10d3ed7805e"
+  },
+  "genre": [
+    "Drama",
+    "Mystery"
+  ],
+  "photos": [
+    "dragon-tattoo-1.jpg",
+    "dragon-tattoo-2.jpg",
+    "dragon-tattoo-3.jpg",
+    "dragon-tattoo-4.jpg"
+  ],
+  "name": "The Girl with the Dragon Tattoo",
+  "description": "The Girl with the Dragon Tattoo is a 2011 psychological crime thriller film based on the 2005 novel by Swedish writer Stieg Larsson. It was directed by David Fincher with a screenplay by Steven Zaillian. Starring Daniel Craig as journalist Mikael Blomkvist and Rooney Mara as Lisbeth Salander, it tells the story of Blomkvist's investigation to find out what happened to a girl from a wealthy family who disappeared 40 years prior. He recruits the help of Salander, a computer hacker",
+  "runtime": "158",
+  "videoQuality": "HDTV",
+  "yearReleased": "2011",
+  "videoLink": "https://www.youtube.com/embed/yOfX2FS3L9g",
+  "visibility": true,
+  "rating": "8.3",
+  "totalReviews": 0,
+  "poster": "dragon-tattoo-poster.jpg",
+  "totalNumberOfRatings": 1,
+  "reviews": [
+    {
+      "_id": {
+        "$oid": "60b8e24b7f7cf10d3ed7805f"
+      },
+      "reviewTitle": "Excellent Story",
+      "reviewAuthor": "Random Author",
+      "reviewContent": "After the announcement that The Girl with the Dragon Tattoo was getting an English-language film treatment, I decided that the hype had built up to a point where I just had to read the source material for myself. Though it is not without flaws, Dragon Tattoo is an excellent story with the important mission of raising awareness concerning violence against women. Mere days after finishing the book I watched the Swedish film. The hype train had me excited for an outstanding thriller.",
+      "reviewRating": "8.3",
+      "reviewLiked": 3,
+      "reviewDisliked": 1,
+      "reviewDateCreated": "03.06.2021",
+      "reviewTimeCreated": "7:08 PM (Pakistan Standard Time)"
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b8f246adb5486838327397"
+  },
+  "genre": [
+    "Mystery"
+  ],
+  "photos": [
+    "money-monster-1.jpg",
+    "money-monster-2.jpg",
+    "money-monster-3.jpg"
+  ],
+  "name": "Money Monster",
+  "description": "Money Monster is a 2016 American crime thriller film directed by Jodie Foster and written by Alan Di Fiore, Jim Kouf and Jamie Linden. The film stars George Clooney (who also co-produced) as Lee Gates, a TV personality who advises his audience on financial investment and speculation on the New York stock markets and who is forcefully interrogated by Kyle Budwell (Jack O'Connell), a grief-stricken bankrupt viewer who lost his money after a previous tip; the film also stars Julia Roberts, Giancarlo Esposito, Dominic West and Caitriona Balfe.",
+  "runtime": "99",
+  "videoQuality": "FullHD",
+  "yearReleased": "2016",
+  "videoLink": "https://www.youtube.com/embed/qr_nGAbFkmk",
+  "visibility": true,
+  "rating": "7.8",
+  "totalReviews": 0,
+  "poster": "money-monster-poster.jpg",
+  "totalNumberOfRatings": 1,
+  "reviews": [
+    {
+      "_id": {
+        "$oid": "60b8f2baadb5486838327398"
+      },
+      "reviewTitle": "Fairly Tense Thriller with Laughs",
+      "reviewAuthor": "Random Author",
+      "reviewContent": "Considering this is a pretty intense movie about a desperate guy threatening to shoot and blow up people, this movie had moments of unexpected humour. The whole cinema was laughing at various points. Which was very cleverly done by director, Jodie Foster. The movie is well scripted and well acted. Clooney and Roberts clearly enjoy working together (just don't remind me of Ocean's 12). I agree with the other reviewer who said the movie should have just stopped with the return to the foosball table, and not gone for the schmaltzy hospital scene. Not the greatest movie of the year and not Oscar-worthy, but well worth the price of the movie ticket. Can't understand why it's only got a rating of 6.8 on IMDb",
+      "reviewRating": "7.8",
+      "reviewLiked": 0,
+      "reviewDisliked": 1,
+      "reviewDateCreated": "03.06.2021",
+      "reviewTimeCreated": "8:18 PM (Pakistan Standard Time)"
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b8f3d0adb548683832739a"
+  },
+  "genre": [
+    "Mystery"
+  ],
+  "photos": [
+    "primal-fear-1.jpg",
+    "primal-fear-2.jpg",
+    "primal-fear-3.jpg",
+    "primal-fear-4.jpg",
+    "primal-fear-5.jpg"
+  ],
+  "name": "Primal Fear",
+  "description": "Primal Fear is a 1996 American legal thriller film directed by Gregory Hoblit, based on William Diehl's 1993 novel of the same name. It stars Richard Gere as a Chicago defense attorney who believes that his altar boy client (played by Edward Norton in his film debut) is not guilty of murdering an influential Catholic archbishop.\r\n\r\nPrimal Fear was a box office success and earned generally positive reviews, with Norton's performance receiving universal acclaim. He was nominated for an Academy Award for Best Supporting Actor and won a Golden Globe Award for Best Supporting Actor – Motion Picture.[2]",
+  "runtime": "130",
+  "videoQuality": "DVDRip",
+  "yearReleased": "1996",
+  "videoLink": "https://www.youtube.com/embed/glWAjoDVH3c",
+  "visibility": true,
+  "rating": "0.0",
+  "totalReviews": 0,
+  "poster": "primal-fear-poster.jpg",
+  "totalNumberOfRatings": 0,
+  "reviews": [],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b8f530a97082759fc0643c"
+  },
+  "genre": [
+    "Mystery",
+    "Thriller"
+  ],
+  "photos": [
+    "6th-sense-1.jpg",
+    "6th-sense-2.jpg",
+    "6th-sense-3.jpg",
+    "6th-sense-4.jpg"
+  ],
+  "name": "The Sixth Sense",
+  "description": "The Sixth Sense is a 1999 American supernatural psychological thriller film[2] written and directed by M. Night Shyamalan. It stars Bruce Willis as a child psychologist whose patient (Haley Joel Osment) can talk to the dead. The film established Shyamalan and introduced the cinema public to his traits, most notably his affinity for surprise endings.[3]\r\n\r\nReleased by Walt Disney Pictures (through its Hollywood Pictures label) on August 6, 1999, critics praised its performances (particularly those of Willis, Osment, and Toni Collette), atmosphere and plot twist",
+  "runtime": "107",
+  "videoQuality": "BluRay",
+  "yearReleased": "1999",
+  "videoLink": "https://www.youtube.com/embed/3-ZP95NF_Wk",
+  "visibility": true,
+  "rating": "8.4",
+  "totalReviews": 0,
+  "poster": "sixth-sense-poster.jpg",
+  "totalNumberOfRatings": 1,
+  "reviews": [
+    {
+      "_id": {
+        "$oid": "60b8f56ea97082759fc0643d"
+      },
+      "reviewTitle": "A Movie that Will Not be Outclassed!",
+      "reviewAuthor": "Random Author",
+      "reviewContent": "When I first saw The Sixth Sense, I didn't know what to expect. I guess I was looking forward to a good scary horror flick. I was very surprised. I found that the purpose for this movie was far greater than just trying to scare the audience. I found this movie was showing not only the emotions of fear, but also faith, commitment, sadness of loss, and love. The end was so surprising, I had to see it again. The second time I watched it, I did it from a totally different perspective (this is a very rare quality for any movie), and I enjoyed it just as much, or maybe even more. I also, as many viewers have, tried to detect fallacies in the story. I couldn't find one. In addition, for those that appreciate great soundtracks, the music only helps to heighten the experience of the movie.",
+      "reviewRating": "8.4",
+      "reviewLiked": 0,
+      "reviewDisliked": 0,
+      "reviewDateCreated": "03.06.2021",
+      "reviewTimeCreated": "8:29 PM (Pakistan Standard Time)"
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b8f78f0cf66c7a53cc8898"
+  },
+  "genre": [
+    "Drama",
+    "Mystery",
+    "Thriller"
+  ],
+  "photos": [
+    "seven-1.jpg",
+    "seven-2.jpg",
+    "seven-3.jpg",
+    "seven-4.jpg",
+    "seven-5.jpg",
+    "seven-6.jpg"
+  ],
+  "name": "Se7en",
+  "description": "Seven (stylized as SE7EN) is a 1995 American neo-noir[3] psychological crime thriller film directed by David Fincher and written by Andrew Kevin Walker. It stars Brad Pitt, Morgan Freeman, Gwyneth Paltrow, Kevin Spacey, R. Lee Ermey and John C. McGinley. The film tells the story of David Mills (Pitt), a detective who partners with the retiring William Somerset (Freeman) to track down a serial killer who uses the seven deadly sins as a motif in his murders.",
+  "runtime": "127",
+  "videoQuality": "TeleSync",
+  "yearReleased": "1995",
+  "videoLink": "https://www.youtube.com/embed/znmZoVkCjpI",
+  "visibility": true,
+  "rating": "8.9",
+  "totalReviews": 0,
+  "poster": "seven-poster.jpg",
+  "totalNumberOfRatings": 1,
+  "reviews": [
+    {
+      "_id": {
+        "$oid": "60b8fbbf0cf66c7a53cc889c"
+      },
+      "reviewTitle": "Really a Very Good Movie!",
+      "reviewAuthor": "Random Author",
+      "reviewContent": "This is a masterpiece produced by Kevin Spacey and Bradd PItt. Absolutely loved it! I wish there were more like of this one <3",
+      "reviewRating": "8.9",
+      "reviewLiked": 0,
+      "reviewDisliked": 0,
+      "reviewDateCreated": "03.06.2021",
+      "reviewTimeCreated": "8:56 PM (Pakistan Standard Time)"
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b8f9c60cf66c7a53cc8899"
+  },
+  "genre": [
+    "Comedy",
+    "Action",
+    "Adventure"
+  ],
+  "photos": [
+    "johny-english-1.jpg",
+    "johny-english-2.jpg",
+    "johny-english-3.jpg",
+    "johny-english-4.jpg",
+    "johny-english-5.jpg",
+    "johny-english-6.jpg",
+    "johny-english-7.jpg"
+  ],
+  "name": "Johnny English Strikes Again",
+  "description": "Johnny English Strikes Again is a 2018 action spy comedy film directed by David Kerr.[3] A sequel to Johnny English Reborn (2011), it is the third instalment of the Johnny English series. The film stars Rowan Atkinson in the title role, alongside Ben Miller, Olga Kurylenko, Jake Lacy and Emma Thompson. The film follows the titular MI7 agent who is called into action, when all undercover operatives are exposed in a cyber attack.",
+  "runtime": "89",
+  "videoQuality": "BluRay",
+  "yearReleased": "2018",
+  "videoLink": "https://www.youtube.com/embed/-Qv6p6pTz5I",
+  "visibility": true,
+  "rating": "9.8",
+  "totalReviews": 0,
+  "poster": "johny-english-poster.jpg",
+  "totalNumberOfRatings": 1,
+  "reviews": [
+    {
+      "_id": {
+        "$oid": "60b8fa270cf66c7a53cc889a"
+      },
+      "reviewTitle": "Amazing that I Laughed So Much!",
+      "reviewAuthor": "Random Author",
+      "reviewContent": "Nothing complicated, just a good old fashioned comedy caper. Haven't laughed as much in ages.\r\n",
+      "reviewRating": "9.8",
+      "reviewLiked": 0,
+      "reviewDisliked": 0,
+      "reviewDateCreated": "03.06.2021",
+      "reviewTimeCreated": "8:49 PM (Pakistan Standard Time)"
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60b8fb240cf66c7a53cc889b"
+  },
+  "genre": [
+    "Comedy",
+    "Romance"
+  ],
+  "photos": [
+    "before-we-go-1.jpeg",
+    "before-we-go-2.jpg",
+    "before-we-go-3.jpg",
+    "before-we-go-4.jpg",
+    "before-we-go-5.jpg"
+  ],
+  "name": "Before We Go",
+  "description": "Before We Go is a 2014 American romantic drama film directed by Chris Evans in his directorial debut. It stars Evans (who also co-produced) and Alice Eve as two strangers stuck in Manhattan, New York City for the night.\r\n\r\nThe film had its world premiere in the Special Presentations section of the 39th Toronto International Film Festival on September 12, 2014.[3][4] It was released on video on demand on July 21, 2015 and had a limited theatrical release in the United States on September 4, 2015.",
+  "runtime": "95",
+  "videoQuality": "Cam",
+  "yearReleased": "2014",
+  "videoLink": "https://www.youtube.com/embed/vNzaiGzPoUg",
+  "visibility": true,
+  "rating": "0.0",
+  "totalReviews": 0,
+  "poster": "before-we-go.jpg",
+  "totalNumberOfRatings": 0,
+  "reviews": [],
+  "__v": 0
+}]

@@ -51,7 +51,7 @@ module.exports = {
             return (toReturn.slice(0, -2));
         }
         else {
-            return 'No Genres Added Yet';
+            return 'No Genres Added';
         }
     },
     moviePhotoRequest: function (photoName, options) {
@@ -110,7 +110,7 @@ module.exports = {
             return( Math.round(parseFloat(rating / totalRatings) * 10) / 10 ); // rounding off to 1 DP
         }
         else {
-            return 'Not Rated Yet';
+            return 'Not Rated';
         }
     },
     createFullName: function(object, options) {
@@ -147,7 +147,11 @@ module.exports = {
     },
     generateHomeLatestReviews: (carouselData) => {
         let toReturn = ``;
-        for (let i = carouselData.length - 1; i > 0; i--) {
+        let count = 0;
+        for (let i = carouselData.length - 1; ; i--) {
+            count++;
+            if (count == 7 || !carouselData[i])
+                break;
             toReturn +=
             `<!-- card -->
             <div class="col-6 col-sm-12 col-lg-6">
@@ -173,7 +177,7 @@ module.exports = {
 
                                     <ul class="card__list">
                                         <li> ${ carouselData[i].videoQuality } </li>
-                                        <li>16+</li>
+                                        <li> Available </li>
                                     </ul>
                                 </div>
                                 <div class="card__description">
@@ -187,7 +191,9 @@ module.exports = {
                 </div>
             </div>`
         }
-        
         return(toReturn);
+    }, 
+    generateAgeRandomly: () => {
+        return Math.floor(Math.random() * (16 - 12 + 1) + 12)
     }
 }

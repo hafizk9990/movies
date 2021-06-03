@@ -12,7 +12,7 @@ router.all('/*', (req, res, next) => { // select everything that comes after thi
 });
 
 // admin's homepage
-router.get('/', async (req, res) => {
+router.get('/', (req, res) => {
     Movies.count().lean()
     .then( (totalMovies) => {
         Genres.count().lean()

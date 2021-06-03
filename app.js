@@ -8,7 +8,7 @@ const {
     forEditMovies, genreForMovieDetails, moviePhotoRequest, 
     countPhotos, visibilityStatus, generateHomeGenreNamesDynamicallyforNonMobile,
     generateHomeGenreNamesDynamicallyforMobile, generateHomeMoviesDynamically,
-    dateHelper, movieRating, createFullName, generateHomeLatestReviews, // peopleAlsoLike
+    dateHelper, movieRating, createFullName, generateHomeLatestReviews, generateAgeRandomly
 } = require('./helper/handlebars-helpers');
 const uploadFiles = require('express-fileupload');
 const sessions = require('express-session');
@@ -25,7 +25,7 @@ app.listen(64000, () => console.log('NodeJS server running now'));
 app.use(methodOverride('_method')); // to get router.put and router.delete functionality for updation and deletion. This overrides .post with .delete / .put
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(uploadFiles({ useTempFiles: true }));// setting up file uploading functionality
+app.use(uploadFiles({ useTempFiles: false }));// setting up file uploading functionality
 app.use(flash());
 app.use(sessions({
     secret: 'uzair9990', 
@@ -88,6 +88,7 @@ app.engine('handlebars', handlebarsEngine({
         movieRating: movieRating,
         createFullName: createFullName,
         generateHomeLatestReviews: generateHomeLatestReviews,
+        generateAgeRandomly: generateAgeRandomly,
     }
 }));
 

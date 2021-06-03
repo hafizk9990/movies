@@ -61,9 +61,9 @@
 										<span class="card__rate"><i class="icon ion-ios-star"></i> {{#movieRating movie.rating movie.totalNumberOfRatings}} {{/movieRating}} </span>
 
 										<ul class="card__list">
-											<li> {{ movie.videoQuality }} </li>
-											<li> 16+ </li>
-											<li> USA </li>
+											<li style = "color: gray"> {{ movie.videoQuality }} </li>
+											<li style = "color: gray"> USA </li>
+											<li> <a style = "color: gray" href = "https://www.netflix.com/browse"> Netflix </a> </li>
 										</ul>
 									</div>
 									<ul class="card__meta">
@@ -149,7 +149,7 @@
                                                 <li class="comments__item">
                                                     <div class="comments__autor">
                                                         <img class="comments__avatar" src="/img/user.svg" alt="">
-                                                        <span class="comments__name"> {{ reviewAuthor }}: &nbsp; {{ reviewTitle }} </span>
+                                                        <span class="comments__name"> {{ reviewTitle }} </span> {{!-- {{ reviewAuthor }}: &nbsp;  --}}
                                                         <span style = "color: #ff55a5;" class="comments__time"> {{#dateHelper reviewDateCreated}} {{/dateHelper}} | {{ reviewTimeCreated }} </span>
                                                         <span class="reviews__rating"><i class="icon ion-ios-star"></i> {{ reviewRating }} </span>
                                                     </div>
@@ -265,7 +265,7 @@
                                         <div class="card__content">
                                             <h3 class="card__title"><a href="/home/movies/{{_id}}"></a> {{ name }} </h3>
                                             <span class="card__category">
-                                                <a> {{#genreForMovieDetails genre}} {{/genreForMovieDetails}} </a>
+                                                <a style = "color: #ff55af"> {{#genreForMovieDetails genre}} {{/genreForMovieDetails}} </a>
                                             </span>
                                             <span class="card__rate"><i class="icon ion-ios-star"></i> {{#movieRating rating totalNumberOfRatings}} {{/movieRating}} </span>
                                         </div>
