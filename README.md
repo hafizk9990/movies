@@ -3,17 +3,19 @@ The project, movies reviewing site, is on the MERN stack. It uses bootstrap temp
 
 Remember, app.js is the entry point of the website
 
-## Features
-The web app offers several features. The movies are added by the admin, and you, as a user, can search those movies and leave your thoughts about them after signing in
+### Features
+The web app offers several features. 
 
-If you want to leave remarks about a movie but it has not been added yet, you can log a request with the admins to add that movie, so that you can rate and review it later. Moreover, you can also like or dislike other people's thoughts and comments on the movie and, therefore, express yourself more openly
+* The movies are added by the admins (ONLY), and you, as a user, can search those movies and leave your thoughts about them after signing in
+* If you want to leave remarks about a movie but it has not been added yet, you can log a request with the admins to add that movie, so that you can rate and review it later
+* Moreover, you can also like or dislike other people's thoughts and comments on the movie and, therefore, express yourself more openly
 
-## Timeline
-It took me over two months to learn the components of the MERN stack (MongoDB, ExpressJS, NodeJS, Handlebars) individually. Afterwards, it took me over a month to implement this project from scratch with 6-8 hours of work everyday. I implemented this project in my summer break, 2021, as a rising finaly-year computer science student at Lahore University of Management Sciences (LUMS)
+### Timeline
+It took me over two months to learn the components of the MERN stack (MongoDB, ExpressJS, NodeJS, Handlebars) individually. Afterwards, it took me over a month to implement this project from scratch with 6-8 hours of work everyday. The project was implemented in the summer break, 2021, as a rising finaly-year computer science student at Lahore University of Management Sciences (LUMS)
 
 Remember, I did not create the GUI. On the front-end, a bootstrap template, FlixGo Movies, has been used. Modifications and customization were made to this template to ensure that it could be used properly to meet the requirements of the project and its use cases
 
-## How to Run the Project Locally?
+### How to Run the Project Locally?
 You can download all the source code from here. It can be run locally on the port 64, 000 by running the following command: 
 ``` bash
   nodejs app.js
@@ -30,12 +32,12 @@ Remember, you need to have NodeJS, ExpressJS, and MongoDB installed in your syst
 The purpose of this document is to help the readers of my code understand what on earth I have
 written and, most importantly, how I have gone around writing it
 
-## Overview
+### Overview
 The project, movies reviewing site, is on the MERN stack. The project uses bootstrap (frontend), ExpressJS (middleware), NodeJS (server) and MongoDB (database). Moreover, a templating engine, called handlebars, has also been used (which introduces all the complexity in the project and compels me to document it in the first place)
 
 Remember, app.js is the entry point for the project
 
-## ExpressJS – Serving Static Files
+### ExpressJS – Serving Static Files
 This part is very easy; using ExpressJS framework, we serve the bootstrap files. The basic syntax
 used is: 
 ```javascript
@@ -84,7 +86,7 @@ become
 Moreover, you do the same to the CSS file
 requests in the href of the same files (in the head of the html)
 
-## ExpressJS – Managing Routes
+### ExpressJS – Managing Routes
 This one is relatively trickier but not so much. The complexity here is added by both ExpressJS
 as well as handlebars
 
@@ -168,7 +170,7 @@ on a specific route. For example,
 is added to
 all the files of the admin/ route
 
-## ExpressJS & Handlebars – Parameters to res.render( )
+### ExpressJS & Handlebars – Parameters to res.render( )
 Parameters refer to the same thing as they do in React-Native: while moving from one “screen”
 to another, you simply pass some data in JSON format so that it can be accessed in the other file.
 Whatever we pass in parameters can be displayed easily using:
@@ -190,7 +192,7 @@ statements can also be used in handlebars using:
 {{/if}}
 ```
 
-## JavaScript & Handlebars – Helper Functions
+### JavaScript & Handlebars – Helper Functions
 Helper functions, set in helpers directory, are JavaScript functions that are exported from a file
 and imported in the server-containing file (app.js) and added to the following function:
 ```javascript
@@ -222,7 +224,7 @@ scripting language in the first place
 For example, in order to read values from an array inside a handlebars for loop (nested loop), we
 have to depend on these external helper functions, as nested loop gives issues in handlebars
 
-## Handlebars – lean( ) for Unprotected Prototype Access
+### Handlebars – lean( ) for Unprotected Prototype Access
 Sometimes, for security reasons, handlebars does not display data coming in as a parameter.
 Now, we have to add a “lean()” method before writing the “then()” handler, and the issue gets
 resolved. 
@@ -245,7 +247,7 @@ On the other hand, if we are taking code from our user and executing it in the s
 are not doing), then we should never enable unprotected prototype access using this method,
 because then there will be issues and security vulnerabilities that we do not want
 
-## Uploading Files – Images and More (express-fileupload)
+### Uploading Files – Images and More (express-fileupload)
 In order to upload files, a separate module has been used and set-up in server (app.js). It adds to
 the incoming request object the functionality to access files, and the files can be accessed later
 using
@@ -254,7 +256,7 @@ using
 ```
 in the specific route
 
-## ExpressJS & Handlebars – Flash Messages (connect-flash)
+### ExpressJS & Handlebars – Flash Messages (connect-flash)
 Here, we have installed a module for sending flash messages. Flash messages are the messages
 that are sent to a specific page after a user is redirected to it. For example, after updating the
 movie, you take your user to the /admin/movies/view-all-movies route. Here, you need to
@@ -282,7 +284,7 @@ message can be displayed in handlebars file using:
   {{ *flash-message-name* }}
 ```
   
-## ExpressJS – Method Overriding for .put( ) & .delete( ) requests (method-override)
+### ExpressJS – Method Overriding for .put( ) & .delete( ) requests (method-override)
 Method overriding has also been implemented for the sake of accessing router.put() and router.delete() methods. For this, you have to install a module, viz. method-override and set it up in middleware, like this:
 ```javascript
   app.use( (req, res, next) => {
@@ -302,6 +304,5 @@ That's it
 
 It is highly recommended that you follow good coding practices by using .put( ) and .delete( ) for updating and deleting (respectively) instead of .get( ) and .post( ) request methods
 
-## Sessions (express-session)
-We can also set sessions by setting them up in our middleware. Afterwards, our sessions will be
-available in the entire application via the request object (to which the sessions object was added)
+### Security & Protection
+As of now, I have not taken any steps to secure this application. The project is totally vulnerable to URL injections, un-authorized accesses, as well as common DB attacks. If the project gets deployed, appropriate security measures will be taken at that time, but for now, we are done with this project
