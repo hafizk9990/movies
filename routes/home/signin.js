@@ -27,17 +27,13 @@ router.post('/', (req, res, next) => {
     Users.findOne({ email: req.body.email }).then( (user) => {
         if (crypto.createHash('sha256').update(req.body.pass).digest('base64') == user.password) {
             if (user.userType == 'Non-Admin') {
-                req.session.email = req.body.email;
-                req.session.role = 'Non-Admin';
-
                 res.redirect('/home');
             }
             else if (user.userType == 'Admin') {
+                req.session.isAuth = true; // we have created this specific variable called "isAuth" and it is not built-in
                 req.session.email = req.body.email;
-                req.session.role = 'Admin';
-
-                // req.session.cookie = '12345';
-
+                console.log('ID of this session:', req.session.id);
+    
                 res.redirect('/admin');
             }
         }

@@ -14,7 +14,13 @@ const uploadFiles = require('express-fileupload');
 const sessions = require('express-session');
 const flash = require('connect-flash');
 const methodOverride = require('method-override');
+const mongoDBSession = require('connect-mongodb-session')(sessions); // passing sessions variable to it
 
+// creating a storage collection for cookie-based sessions
+const store = new mongoDBSession({
+    uri: 'mongodb://localhost:27017/moviesProject', 
+    collection: 'mySessions'
+});
 
 // creating server
 const app = express();
@@ -28,9 +34,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(uploadFiles({ useTempFiles: false }));// setting up file uploading functionality
 app.use(flash());
 app.use(sessions({
-    secret: 'uzair9990', 
-    resave: true,
-    saveUninitialized: true, 
+    secret: 'this is the secret key that signs the cookie',
+    resave: false, // do not initialize a new cookie if the user is same
+    saveUninitialized: false, 
+    store: store, 
+    cookie: {
+        httpOnly: false
+    }
 }));
 
 // overriding request methods of to get put and delete functionality
@@ -103,6 +113,7 @@ app.use('/admin/view-reviews', require('./routes/admin/reviews'));
 // setting up all our routes (home)
 app.use('/home/movies', require('./routes/home/movies'));
 app.use('/signin', require('./routes/home/signin'));
+app.use('/signout', require('./routes/home/signout'));
 app.use('/signup', require('./routes/home/signup'));
 app.use('/home/movies/reviews', require('./routes/home/reviews'));
 
