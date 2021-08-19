@@ -37,7 +37,7 @@ app.use(sessions({
     secret: 'this is the secret key that signs the cookie',
     resave: false, // do not initialize a new cookie if the user is same
     saveUninitialized: false, 
-    store: store, 
+    store: store, // storing in MongoDB the session for the logged in person
     cookie: {
         httpOnly: false
     }
