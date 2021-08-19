@@ -317,6 +317,3 @@ Afterwards, whenvever you send a request, you add the following code at the end 
 That's it
 
 It is highly recommended that you follow good coding practices by using .put( ) and .delete( ) for updating and deleting (respectively) instead of .get( ) and .post( ) request methods
-
-### Security & Protection
-As of now, I have not taken any steps to secure this application. The project is totally vulnerable to URL injections, un-authorized accesses, as well as common DB attacks. If the project gets deployed, appropriate security measures will be taken at that time, but for now, we are done with this project
