@@ -11,20 +11,15 @@ const {
     dateHelper, movieRating, createFullName, generateHomeLatestReviews, generateAgeRandomly
 } = require('./helper/handlebars-helpers');
 const uploadFiles = require('express-fileupload');
-const sessions = require('express-session');
 const flash = require('connect-flash');
 const methodOverride = require('method-override');
-const mongoDBSession = require('connect-mongodb-session')(sessions); // passing sessions variable to it
+const sessions = require('express-session');
+const MongoStore = require('connect-mongo');
 
-// creating a storage collection for cookie-based sessions
-const store = new mongoDBSession({
-    uri: 'mongodb://localhost:27017/moviesProject', 
-    collection: 'mySessions'
-});
 
 // creating server
 const app = express();
-app.listen(64000, () => console.log('NodeJS server running now'));
+app.listen(process.env.PORT || 64000, () => console.log('NodeJS server running now'));
 
 
 // setting up our middleware
@@ -33,15 +28,42 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(uploadFiles({ useTempFiles: false }));// setting up file uploading functionality
 app.use(flash());
+
+/*
+    This is our sessions-cookie middleware. Notice even if the person is not logged in, 
+    and they just visit any of the pages on this server, we plant the cookie in
+    their computer and also store it in our DB
+
+    We are not setting isAuth = true here, because they are not authenticated.
+    When they sign in successfully, then we will set isAuth = true
+
+    People can access admin pages ONLY if isAuth = true in the DB
+
+    1 hour after they visit the website, their cookie expires. 1 min after the 
+    cookie expires, we delete the session from the DB as well. Removing from the DB
+    is important, because otherwise a lot of space will be consumed like crazy
+*/
+
+
 app.use(sessions({
-    secret: 'this is the secret key that signs the cookie',
-    resave: false, // do not initialize a new cookie if the user is same
-    saveUninitialized: false, 
-    store: store, // storing in MongoDB the session for the logged in person
+    secret: 'klkdf@kl#sdfj_dskf-hdflskdqe4+4=nsdfmnlfjo2reir#u', // random secret key to sign the cookie,
+    resave: false,
+    saveUninitialized: false,
+    // storing in MongoDB our cookie for this person 
+    // even though they are not yet logged in
+    store: MongoStore.create({
+        mongoUrl: 'mongodb://localhost:27017/moviesProject', // it will automatically create a sessions collection and store all our sessions in it
+        autoRemove: 'interval',
+        autoRemoveInterval: 1 
+        // One minute after the cookie expires, 
+        // we delete sessions from our DB as well
+    }),
     cookie: {
-        httpOnly: false
+        httpOnly: false,
+        maxAge: 3600000 // after 1 hour or 3600000 ms, the cookie expires in the browser
     }
 }));
+
 
 // overriding request methods of to get put and delete functionality
 app.use( (req, res, next) => {

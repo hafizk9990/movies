@@ -6,8 +6,6 @@ const Users = require('../../models/Users');
 const mongoose = require('mongoose');
 const { ObjectID } = require('bson');
 const crypto = require('crypto');
-const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
 
 // Making sure that if you come to this file from admin, you do not inherit admin's layout, rather you fall back on default layout which for home
 router.all('/*', (req, res, next) => { // select everything that comes after this route (localhost:64000/home/)
@@ -15,12 +13,10 @@ router.all('/*', (req, res, next) => { // select everything that comes after thi
     next();
 });
 
-
 // sign-in (get)
 router.get('/', (req, res) => {
     res.render('home/signin', { layout: false }); // This will be sent dynamically from ther server to signin.handlebars file
 });
-
 
 // sign-in (post)
 router.post('/', (req, res, next) => {
@@ -30,10 +26,16 @@ router.post('/', (req, res, next) => {
                 res.redirect('/home');
             }
             else if (user.userType == 'Admin') {
-                req.session.isAuth = true; // we have created this specific variable called "isAuth" and it is not built-in
+                req.session.isAuth = true; 
+                /*
+                    We have created this specific variable called "isAuth" 
+                    and it is not built-in. It will be appended to this session's document inside the sessions collection
+                    in MongoDB
+
+                    Also, we are creating "email" variable in the DB.
+                    Once again, it is not built-in
+                */
                 req.session.email = req.body.email;
-                console.log('ID of this session:', req.session.id);
-    
                 res.redirect('/admin');
             }
         }
@@ -47,5 +49,4 @@ router.post('/', (req, res, next) => {
     });
 });
 
-
-module.exports = router
+module.exports = router;
