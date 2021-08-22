@@ -17,7 +17,10 @@ router.all('/*', (req, res, next) => { // select everything that comes after thi
 });
 
 
-router.put('/:id', (req, res) => {
+router.put('/:id', async (req, res) => {
+    const allUsers = await Users.find();
+    let thisUserName;
+
     let today = new Date();
     let dd = String(today.getDate()).padStart(2, '0');
     let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -34,9 +37,13 @@ router.put('/:id', (req, res) => {
     
     let reviewRating = (Math.floor(100 * req.body.reviewRating) / 100).toFixed(1); // restricting to 1 DP
 
+    allUsers.map( (eachUser) => 
+        eachUser.email === req.session.email ? thisUserName = eachUser.firstName + ' ' + eachUser.lastName: thisUserName = ''
+    );
+
     let movieReview = {
         reviewTitle: req.body.reviewTitle,
-        reviewAuthor: 'Random Author',
+        reviewAuthor: thisUserName,
         reviewContent: req.body.reviewBody, 
         reviewRating: reviewRating,
         reviewLiked: 0, 
@@ -72,26 +79,33 @@ router.put('/:id', (req, res) => {
         });
     }).catch( (error) => {
         res.render('errors/server', { exactError: error });
-    }); 
+    });
 });
 
 router.get('/vote/:voteID', (req, res) => {
-    const [voteValue, reviewID, movieID] = req.params.voteID.split('*');
-    
-    Movies.findOne( {_id: ObjectID(movieID)} )
-    .then( (movie) => {
-        let reviewExtracted = movie.reviews.find(x => x._id == reviewID); // returns back pointer to the object in the original array (movie.reviews)
-        voteValue == 'up' ? reviewExtracted.reviewLiked++ : reviewExtracted.reviewDisliked++; // updates (via pointer) the actual array's object
-        Movies.findOneAndUpdate({ _id: ObjectID(movieID) }, {
-            $set: { reviews: movie.reviews } // set overwrites everything and sets new updated value (don't always set) 
-        }).then( () => {
-            res.status(200).send('Thumbs updated successfully');
+    if (req.session.isUserSignedIn || req.session.isAuth) {
+        const [voteValue, reviewID, movieID] = req.params.voteID.split('*');
+        let react;
+        
+        Movies.findOne( {_id: ObjectID(movieID)} )
+        .then( (movie) => {
+            let reviewExtracted = movie.reviews.find(x => x._id == reviewID); // returns back pointer to the object in the original array (movie.reviews)
+            voteValue == 'up' ? reviewExtracted.reviewLiked++ : reviewExtracted.reviewDisliked++; // updates (via pointer) the actual array's object
+            voteValue == 'up' ? react = 'Review Upvoted!' : react = 'Review Downvoted!';
+            Movies.findOneAndUpdate({ _id: ObjectID(movieID) }, {
+                $set: { reviews: movie.reviews } // set overwrites everything and sets new updated value (don't always set) 
+            }).then( () => {
+                res.status(200).send(react);
+            }).catch( (error) => {
+                res.render('errors/server', { exactError: error });
+            });
         }).catch( (error) => {
             res.render('errors/server', { exactError: error });
         });
-    }).catch( (error) => {
-        res.render('errors/server', { exactError: error });
-    });
+    }
+    else {
+        res.status(200).send('Please sign in first');
+    }
 });
 
 module.exports = router;

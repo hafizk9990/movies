@@ -149,16 +149,16 @@
                                                 <li class="comments__item">
                                                     <div class="comments__autor">
                                                         <img class="comments__avatar" src="/img/user.svg" alt="">
-                                                        <span class="comments__name"> {{ reviewTitle }} </span> {{!-- {{ reviewAuthor }}: &nbsp;  --}}
-                                                        <span style = "color: #ff55a5;" class="comments__time"> {{#dateHelper reviewDateCreated}} {{/dateHelper}} | {{ reviewTimeCreated }} </span>
+                                                        <span class="comments__name"> {{ reviewAuthor }} </span>
+                                                        <span class="comments__time"> {{#dateHelper reviewDateCreated}} {{/dateHelper}} | {{ reviewTimeCreated }} </span>
                                                         <span class="reviews__rating"><i class="icon ion-ios-star"></i> {{ reviewRating }} </span>
                                                     </div>
+                                                    <p style = "color: #ff55af; margin-left: 1%;"> <em> {{ reviewTitle }} </em> </p>
                                                     <p class="comments__text"> {{ reviewContent }} </p>
                                                     <div class = "div-1-{{_id}}">
                                                         <div class="comments__actions">
                                                             <div class="comments__rate">
                                                                 <div style = "color; red">
-                                                                    
                                                                     {{movieReviewd}}
                                                                 </div>
                                                                 <button class = "up" onclick = "ajaxHelper('{{_id}}', 'up')" type = "button"><i class="icon ion-md-thumbs-up"></i> {{ reviewLiked }} </button>
@@ -168,15 +168,10 @@
                                                     </div>
                                                     <div class = "div-2-{{_id}}">
                                                         <div class="comments__actions">
-                                                            <div class="comments__rate">
-                                                                <span style = "color: green; font-size: 15px;"> Review upvoted </span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class = "div-3-{{_id}}">
-                                                        <div class="comments__actions">
-                                                            <div class="comments__rate">
-                                                                <span style = "color: red; font-size: 14px;"> Review downvoted </span>
+                                                            <div class="comments__rate show-server-response">
+                                                                <span style = "color: #ff55a5; font-size: 15px;">
+																	{{!-- We will add text here dynamically based on what server says --}}
+																</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -185,7 +180,6 @@
                                                     $(document).ready( () => {
                                                         console.log('The document is ready');
                                                         $('.div-2-'+'{{_id}}').hide();
-                                                        $('.div-3-'+'{{_id}}').hide();
                                                     });
                                                 </script>
                                             {{/each}}
@@ -195,12 +189,8 @@
                                             const ajaxHelper = (id, voteValue) => {
                                                 console.log('ajaxHelper movieID:', '{{ movie._id }}');
                                                 $('.div-1-'+id).hide();
-                                                
-                                                if (voteValue === 'up') 
-                                                    $('.div-2-'+id).show();
-                                                else if (voteValue === 'down') 
-                                                    $('.div-3-'+id).show();
-
+												$('.div-2-'+id).show();
+												
                                                 ajax(id, voteValue);
                                             }
                                         </script>
@@ -209,21 +199,27 @@
                                                 console.log('Sending AJAX', `/home/movies/reviews/vote/${ voteValue }*${ reviewID }*{{ movie._id }}`);
 
                                                 $.ajax({
-                                                    type: 'GET', 
+                                                    type: 'GET',
                                                     url: `/home/movies/reviews/vote/${ voteValue }*${ reviewID }*{{ movie._id }}`, 
                                                     
                                                     success: (serverResponse) => {
-                                                        console.log(serverResponse);
+														$('.show-server-response span').text(serverResponse);
                                                     }
                                                 });
                                             };
                                         </script>
-                                        <h1 class="details__title"> Share Your Thoughts? </h1>
+                                        
+										<h1 class="details__title"> Share Your Thoughts? </h1>
+
 										<form action="/home/movies/reviews/{{movie._id}}?_method=PUT" method = "post" class="form">
 											<input name = "reviewTitle" type="text" class="form__input" placeholder = "Review Title" required>
 											<textarea name = "reviewBody" class="form__textarea" required placeholder = "Write Review"></textarea>
                                             <input required name = "reviewRating" type = "number" step = "any" max = "10.0" class="form__input" placeholder = "Rating (0.0 to 10.0)">
-											<button type = "submit" class="form__btn"> Send </button>
+											{{#if email}}
+												<button type = "submit" class="form__btn"> Send </button>
+												{{else}}
+													<button onclick = "window.location.href = '/signin';" class="form__btn sign-in-button"> Sign in to post </button>
+											{{/if}}
 										</form>
 									</div>
 								</div>

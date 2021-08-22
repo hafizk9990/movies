@@ -43,7 +43,11 @@
                                 is interested in that movie, and we will add it here.
                                 Later, you will be able to rate and review the movie, just as you always do!
                             </p>
-							<a href="/home/movies/add-movie-request/{{ requestedMovie }}" class="page-404__btn"> Request Movie </a>
+							{{#if email}}
+								<a href="/home/movies/add-movie-request/{{ requestedMovie }}" class="page-404__btn"> Request Movie </a>
+								{{else}}
+									<button onclick = "window.location.href = '/signin';" class="page-404__btn"> Sign in to request </button>
+							{{/if}}
 						</div>
 					</div>
 				</div>

@@ -7,8 +7,8 @@ let Requests = require('../../models/Requests');
 
 // overwriting default layout of app.js (which goes to home)
 router.all('/*', (req, res, next) => { // select everything that comes after this route (localhost:64000/admin/)
-    
-    // checking if you are logged in or not. If not, you go straight to the login page
+    // checking if you (the admin) are logged in or not. 
+    // If not, you go straight to the login page
     if (req.session.isAuth) {
         req.app.locals.layout = 'index-admin'; // and overwrite the default layout for all these routes to index-admin from views/layouts folder
         next();

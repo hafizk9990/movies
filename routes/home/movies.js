@@ -2,8 +2,10 @@ const express = require('express');
 const router = express.Router();
 const Requests = require('../../models/Requests');
 const Movies = require('../../models/Movies');
+const Users = require('../../models/Users');
 const mongoose = require('mongoose');
 const { ObjectID } = require('bson');
+const { request } = require('express');
 
 
 // Making sure that if you come to this file from admin, you do not inherit admin's layout, rather you fall back on default layout which for home
@@ -24,17 +26,21 @@ router.get('/', (req, res) => {
     });
 });
 
-
 // localhost:64000/home/movies/:id
 router.get('/:id', (req, res) => {
     let movieID = req.params.id;
+    let sessionEmail = req.session ? req.session.email : null;
 
     // fetching the movie by ID from the DB
     Movies.findOne({_id: ObjectID(movieID)}).lean()
     .then( (data) => {
         Movies.find( {$where: function() { return (this.visibility == true) } } ).sort( {_id: -1} ).limit(4).lean() // oldest to newest
         .then( (fourMovies) => {
-            res.render('home/movie-details', { movie: data, peopleAlsoSearch: fourMovies });
+            res.render('home/movie-details', { 
+                movie: data,
+                peopleAlsoSearch: fourMovies,
+                email: req.session.isUserSignedIn || req.session.isAuth? req.session.email: null,
+            });
         }).catch( (error) => {
             res.render('errors/server', { exactError: error });
         });
@@ -53,7 +59,10 @@ router.post('/search', (req, res) => {
             res.render('home/search-results', { data: movies });
         }
         else {
-            res.render('home/search-results-not-found', { requestedMovie: req.body.keyword });
+            res.render('home/search-results-not-found', { 
+                requestedMovie: req.body.keyword,
+                email: req.session.isUserSignedIn || req.session.isAuth ? req.session.email: null
+            });
         }
     }).catch( (error) => {
         res.render('errors/server', { exactError: error });
