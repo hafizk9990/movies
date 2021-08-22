@@ -20,23 +20,49 @@
   "yearReleased": "2006",
   "videoLink": "https://www.youtube.com/embed/RLtaA9fFNXU",
   "visibility": true,
-  "rating": "8.7",
+  "rating": "37.4",
   "totalReviews": 0,
   "poster": "prestige-poster.jpg",
-  "totalNumberOfRatings": 1,
+  "totalNumberOfRatings": 4,
   "reviews": [
     {
       "_id": {
         "$oid": "60b8dbe67f7cf10d3ed78055"
       },
       "reviewTitle": "Storytelling at its best!",
-      "reviewAuthor": "Random Author",
+      "reviewAuthor": "Sarim Alvi",
       "reviewContent": "The Prestige is a masterful exercise in storytelling with superb direction and powerful performances by a grand ensemble cast. From set and production design to cinematography, from script to presentation, Christopher Nolan has once again demonstrated why he is one of the film world's brightest up and coming directors. The Prestige only helps solidify his standing as one of the landmark directors of his generation.",
       "reviewRating": "8.7",
-      "reviewLiked": 2,
-      "reviewDisliked": 1,
+      "reviewLiked": 22,
+      "reviewDisliked": 20,
       "reviewDateCreated": "03.06.2021",
       "reviewTimeCreated": "6:40 PM (Pakistan Standard Time)"
+    },
+    {
+      "_id": {
+        "$oid": "6122baa7ef19214c6a854e1a"
+      },
+      "reviewTitle": "Good",
+      "reviewAuthor": "Aleena Majeed",
+      "reviewContent": "This is a good movie",
+      "reviewRating": "8.9",
+      "reviewLiked": 1,
+      "reviewDisliked": 1,
+      "reviewDateCreated": "23.08.2021",
+      "reviewTimeCreated": "1:59 AM (Pakistan Standard Time)"
+    },
+    {
+      "_id": {
+        "$oid": "6122d32115ded6bc45c998a0"
+      },
+      "reviewTitle": "Nice Movie, Nicer Plot",
+      "reviewAuthor": "Uzair Afzal",
+      "reviewContent": "The title says it all for me. Must add here that this movie could not have been any better. Loved every single bit of it",
+      "reviewRating": "9.8",
+      "reviewLiked": 2,
+      "reviewDisliked": 0,
+      "reviewDateCreated": "23.08.2021",
+      "reviewTimeCreated": "3:43 AM (Pakistan Standard Time)"
     }
   ],
   "__v": 0
@@ -62,23 +88,36 @@
   "yearReleased": "2019",
   "videoLink": "https://www.youtube.com/embed/xi-1NchUqMA",
   "visibility": true,
-  "rating": "9.0",
+  "rating": "18.1",
   "totalReviews": 0,
   "poster": "knives-out-poster.jpg",
-  "totalNumberOfRatings": 1,
+  "totalNumberOfRatings": 2,
   "reviews": [
     {
       "_id": {
         "$oid": "60b8de157f7cf10d3ed7805a"
       },
       "reviewTitle": "Bravo!",
-      "reviewAuthor": "Random Author",
+      "reviewAuthor": "Muhammad Hafeez",
       "reviewContent": "Nothing was typical about this. Everything was beautifully done in this movie, the story, the flow, the scenario, everything. I highly recommend it for mystery lovers, for anyone who wants to watch a good movie!",
       "reviewRating": "9.0",
-      "reviewLiked": 1,
-      "reviewDisliked": 0,
+      "reviewLiked": 3,
+      "reviewDisliked": 1,
       "reviewDateCreated": "03.06.2021",
       "reviewTimeCreated": "6:50 PM (Pakistan Standard Time)"
+    },
+    {
+      "_id": {
+        "$oid": "6122d989628dfcda03ae7073"
+      },
+      "reviewTitle": "Good One",
+      "reviewAuthor": "Uzair Afzal",
+      "reviewContent": "I liked this one. Especially because of the great cast. A well-produced and certainly a well-directed movie",
+      "reviewRating": "9.1",
+      "reviewLiked": 1,
+      "reviewDisliked": 0,
+      "reviewDateCreated": "23.08.2021",
+      "reviewTimeCreated": "4:11 AM (Pakistan Standard Time)"
     }
   ],
   "__v": 0
@@ -104,23 +143,36 @@
   "yearReleased": "2016",
   "videoLink": "https://www.youtube.com/embed/-H1Ii1LjyFU",
   "visibility": true,
-  "rating": "9.1",
+  "rating": "18.0",
   "totalReviews": 0,
   "poster": "nocturnal-animals-poster.jpg",
-  "totalNumberOfRatings": 1,
+  "totalNumberOfRatings": 2,
   "reviews": [
     {
       "_id": {
         "$oid": "60b8e03e7f7cf10d3ed7805d"
       },
       "reviewTitle": "Stylish & Awesome",
-      "reviewAuthor": "Random Author",
+      "reviewAuthor": "Mishal Kareem",
       "reviewContent": "Listen, I'm not a movie guru, I don't study arts, I'm just your average Joe that loves movies. I've seen lots of movies, I don't discriminate, terror, drama, action, animated you name it, I can perfectly differentiate between a bad from a good movie, I don't need the biased comments of the so called movie critics on IMDb. Thanks God I didn't pay attention to all the misguided comments about this movie, Nocturnal Animals is a beautiful & stylish movie, great photography, solid acting and a solid plot that will stay with you long after you finish it. I don't understand why there's so much envy and hate in the film industry, the wannabe movie critics can't take that a guy who came from the fashion world actually can created a pretty good movie. My fellow reader, please don't miss the chance to see this movie",
       "reviewRating": "9.1",
       "reviewLiked": 0,
       "reviewDisliked": 0,
       "reviewDateCreated": "03.06.2021",
       "reviewTimeCreated": "6:59 PM (Pakistan Standard Time)"
+    },
+    {
+      "_id": {
+        "$oid": "6122d7df3a8484d5302a341c"
+      },
+      "reviewTitle": "Deep Movie",
+      "reviewAuthor": "Uzair Afzal",
+      "reviewContent": "It is a deep movie that I really liked",
+      "reviewRating": "8.9",
+      "reviewLiked": 1,
+      "reviewDisliked": 0,
+      "reviewDateCreated": "23.08.2021",
+      "reviewTimeCreated": "4:03 AM (Pakistan Standard Time)"
     }
   ],
   "__v": 0
@@ -145,23 +197,36 @@
   "yearReleased": "2011",
   "videoLink": "https://www.youtube.com/embed/yOfX2FS3L9g",
   "visibility": true,
-  "rating": "8.3",
+  "rating": "17.4",
   "totalReviews": 0,
   "poster": "dragon-tattoo-poster.jpg",
-  "totalNumberOfRatings": 1,
+  "totalNumberOfRatings": 2,
   "reviews": [
     {
       "_id": {
         "$oid": "60b8e24b7f7cf10d3ed7805f"
       },
       "reviewTitle": "Excellent Story",
-      "reviewAuthor": "Random Author",
+      "reviewAuthor": "Shariq Hassan",
       "reviewContent": "After the announcement that The Girl with the Dragon Tattoo was getting an English-language film treatment, I decided that the hype had built up to a point where I just had to read the source material for myself. Though it is not without flaws, Dragon Tattoo is an excellent story with the important mission of raising awareness concerning violence against women. Mere days after finishing the book I watched the Swedish film. The hype train had me excited for an outstanding thriller.",
       "reviewRating": "8.3",
-      "reviewLiked": 3,
+      "reviewLiked": 4,
       "reviewDisliked": 1,
       "reviewDateCreated": "03.06.2021",
       "reviewTimeCreated": "7:08 PM (Pakistan Standard Time)"
+    },
+    {
+      "_id": {
+        "$oid": "611ec91beb9af945e896025c"
+      },
+      "reviewTitle": "Good Movie",
+      "reviewAuthor": "Safa Wali",
+      "reviewContent": "I think it is a good movie",
+      "reviewRating": "9.1",
+      "reviewLiked": 0,
+      "reviewDisliked": 1,
+      "reviewDateCreated": "20.08.2021",
+      "reviewTimeCreated": "2:11 AM (Pakistan Standard Time)"
     }
   ],
   "__v": 0
@@ -184,23 +249,36 @@
   "yearReleased": "2016",
   "videoLink": "https://www.youtube.com/embed/qr_nGAbFkmk",
   "visibility": true,
-  "rating": "7.8",
+  "rating": "15.5",
   "totalReviews": 0,
   "poster": "money-monster-poster.jpg",
-  "totalNumberOfRatings": 1,
+  "totalNumberOfRatings": 2,
   "reviews": [
     {
       "_id": {
         "$oid": "60b8f2baadb5486838327398"
       },
       "reviewTitle": "Fairly Tense Thriller with Laughs",
-      "reviewAuthor": "Random Author",
+      "reviewAuthor": "Ali Hassan",
       "reviewContent": "Considering this is a pretty intense movie about a desperate guy threatening to shoot and blow up people, this movie had moments of unexpected humour. The whole cinema was laughing at various points. Which was very cleverly done by director, Jodie Foster. The movie is well scripted and well acted. Clooney and Roberts clearly enjoy working together (just don't remind me of Ocean's 12). I agree with the other reviewer who said the movie should have just stopped with the return to the foosball table, and not gone for the schmaltzy hospital scene. Not the greatest movie of the year and not Oscar-worthy, but well worth the price of the movie ticket. Can't understand why it's only got a rating of 6.8 on IMDb",
       "reviewRating": "7.8",
-      "reviewLiked": 0,
+      "reviewLiked": 1,
       "reviewDisliked": 1,
       "reviewDateCreated": "03.06.2021",
       "reviewTimeCreated": "8:18 PM (Pakistan Standard Time)"
+    },
+    {
+      "_id": {
+        "$oid": "6122d2b915ded6bc45c9989f"
+      },
+      "reviewTitle": "An Average Movie, but Great Actor",
+      "reviewAuthor": "Aleezay Alvi",
+      "reviewContent": "The movie itself is okay-ish, but the lead character is amazing. His expressions, his body language, everything is just in sync with the tone of the movie",
+      "reviewRating": "7.7",
+      "reviewLiked": 0,
+      "reviewDisliked": 0,
+      "reviewDateCreated": "23.08.2021",
+      "reviewTimeCreated": "3:42 AM (Pakistan Standard Time)"
     }
   ],
   "__v": 0
@@ -252,21 +330,21 @@
   "yearReleased": "1999",
   "videoLink": "https://www.youtube.com/embed/3-ZP95NF_Wk",
   "visibility": true,
-  "rating": "8.4",
+  "rating": "77.5",
   "totalReviews": 0,
   "poster": "sixth-sense-poster.jpg",
-  "totalNumberOfRatings": 1,
+  "totalNumberOfRatings": 10,
   "reviews": [
     {
       "_id": {
         "$oid": "60b8f56ea97082759fc0643d"
       },
       "reviewTitle": "A Movie that Will Not be Outclassed!",
-      "reviewAuthor": "Random Author",
+      "reviewAuthor": "Razzaq Bakhtiyar",
       "reviewContent": "When I first saw The Sixth Sense, I didn't know what to expect. I guess I was looking forward to a good scary horror flick. I was very surprised. I found that the purpose for this movie was far greater than just trying to scare the audience. I found this movie was showing not only the emotions of fear, but also faith, commitment, sadness of loss, and love. The end was so surprising, I had to see it again. The second time I watched it, I did it from a totally different perspective (this is a very rare quality for any movie), and I enjoyed it just as much, or maybe even more. I also, as many viewers have, tried to detect fallacies in the story. I couldn't find one. In addition, for those that appreciate great soundtracks, the music only helps to heighten the experience of the movie.",
       "reviewRating": "8.4",
-      "reviewLiked": 0,
-      "reviewDisliked": 0,
+      "reviewLiked": 6,
+      "reviewDisliked": 2,
       "reviewDateCreated": "03.06.2021",
       "reviewTimeCreated": "8:29 PM (Pakistan Standard Time)"
     }
@@ -306,7 +384,7 @@
         "$oid": "60b8fbbf0cf66c7a53cc889c"
       },
       "reviewTitle": "Really a Very Good Movie!",
-      "reviewAuthor": "Random Author",
+      "reviewAuthor": "Khoala Butt",
       "reviewContent": "This is a masterpiece produced by Kevin Spacey and Bradd PItt. Absolutely loved it! I wish there were more like of this one <3",
       "reviewRating": "8.9",
       "reviewLiked": 0,
@@ -351,11 +429,11 @@
         "$oid": "60b8fa270cf66c7a53cc889a"
       },
       "reviewTitle": "Amazing that I Laughed So Much!",
-      "reviewAuthor": "Random Author",
+      "reviewAuthor": "Ali Hussain Tareen",
       "reviewContent": "Nothing complicated, just a good old fashioned comedy caper. Haven't laughed as much in ages.\r\n",
       "reviewRating": "9.8",
-      "reviewLiked": 0,
-      "reviewDisliked": 0,
+      "reviewLiked": 3,
+      "reviewDisliked": 2,
       "reviewDateCreated": "03.06.2021",
       "reviewTimeCreated": "8:49 PM (Pakistan Standard Time)"
     }
