@@ -173,7 +173,7 @@ module.exports = {
                                 </span>
 
                                 <div class="card__wrap">
-                                    <span class="card__rate"><i class="icon ion-ios-star"></i> ${ Math.round(carouselData[i].rating / carouselData[i].totalNumberOfRatings * 10) / 10 } </span>
+                                    <span class="card__rate"><i class="icon ion-ios-star"></i> ${ parseFloat(carouselData[i].rating) > 0 ? Math.round(carouselData[i].rating / carouselData[i].totalNumberOfRatings * 10) / 10: 'Not Rated' } </span>
 
                                     <ul class="card__list">
                                         <li> ${ carouselData[i].videoQuality } </li>

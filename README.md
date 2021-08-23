@@ -1,5 +1,11 @@
 # Movies Project – MERN Stack
-The project, movies reviewing site, is on the MERN stack. It uses bootstrap template (front-end), ExpressJS (middleware, static files and routing) NodeJS (server) and MongoDB (database). Moreover, a templating engine, Handlebars, has also been used
+The project, movies reviewing site, is on the MERN stack. It makes use of the following:
+* FlixGo Bootstrap template (front-end)
+* ExpressJS (middleware, static files and routing) 
+* NodeJS (server)
+* MongoDB (DB)
+* Handlebars (front-end templating engine)
+* jQuery (AJAX)
 
 Remember, app.js is the entry point of the website
 
@@ -8,15 +14,15 @@ The web app offers several features.
 
 * The movies are added by the admins (ONLY), and you, as a user, can search those movies and leave your thoughts about them after signing in
 * If you want to leave remarks about a movie but it has not been added yet, you can log a request with the admins to add that movie, so that you can rate and review it later
-* Moreover, you can also like or dislike other people's thoughts and comments on the movie and, therefore, express yourself more openly
+* You can also like or dislike other people's thoughts and comments on the movie and, therefore, express yourself more openly. However, there is no way you can directly reply to somebody's thoughts
 
 ### Timeline
-It took me over two months to learn the components of the MERN stack (MongoDB, ExpressJS, NodeJS, Handlebars) individually. Afterwards, it took me over a month to implement this project from scratch with 6-8 hours of work everyday. The project was implemented in the summer break, 2021, as a rising finaly-year computer science student at Lahore University of Management Sciences (LUMS)
+This is the biggest and the most extensive end-to-end full-stack project that I have ever managed single-handedly
 
-Remember, I did not create the GUI. On the front-end, a bootstrap template, FlixGo Movies, has been used. Modifications and customization were made to this template to ensure that it could be used properly to meet the requirements of the project and its use cases
+It took me over five months to learn the components of the MERN stack (JavaScript, MongoDB, ExpressJS, ReactJS, NodeJS & Handlebars) individually, one after another. Afterwards, it took me around two months to implement this project from scratch with 6-8 hours of work everyday. The project was implemented in the summer break, 2021, when I was a rising finaly-year computer science & software engineering student at Lahore University of Management Sciences (LUMS)
 
 ### How to Run the Project Locally?
-You can download all the source code from here. It can be run locally on the port 64, 000 by running the following command: 
+You can download all the source code from here. Also, the entire DB has also been exported as placed here for the public. The project can be run locally on the port 64, 000 by running the following command: 
 ``` bash
   nodejs app.js
 ```
@@ -28,10 +34,10 @@ Afterwards, you can simply type this in your browser to run the project:
 Remember, you need to have NodeJS, ExpressJS, and MongoDB installed in your system. Else, you will not be able to run the project
 
 ### Database Integration
-For public use, the whole databse has been exported (all four collections) and provided on GitHub in JSON format. Navigate here to access the whole database:
+For public use, the whole databse has been exported (other than those that MUST not be provided to the publicly) and provided in the repository in JSON format. Navigate here to access the whole database:
 
 ```bash
-  mongodb/full-database/all-collections
+  mongodb/DB
 ```
 
 You need to have MongoDB set-up on your computer system. Then, you can easily create a database, called *moviesProject* and add all the collections in it. Now, it will be connected when you run the following command in the terminal:
@@ -40,7 +46,7 @@ You need to have MongoDB set-up on your computer system. Then, you can easily cr
   mongod
 ```
 
-Remember, before you run *nodejs app.js* command, you need to run the *mongod* command. Otherwise, the application will give you error, as connection with MongoDB server will not be established successfully
+Remember, before you run *nodejs app.js* command, you need to run the *mongod* command. Otherwise, the application will give you errors, as connection with MongoDB server will not be established successfully from our application
 
 # Project Implementation & Navigation Guide – Complete Documentation
 The purpose of this document is to help the readers of my code understand what on earth I have
@@ -317,3 +323,7 @@ Afterwards, whenvever you send a request, you add the following code at the end 
 That's it
 
 It is highly recommended that you follow good coding practices by using .put( ) and .delete( ) for updating and deleting (respectively) instead of .get( ) and .post( ) request methods
+
+### Sessions & Cookies for State Management (express-session + connect-mongo)
+We have also used express-session as well as connect-mongo for the sake of managing sessions on the server-side and cookies on the front-end. The combination of sessions and cookies allows us manage
+signed in users as well as protect admin pages from unautharized access

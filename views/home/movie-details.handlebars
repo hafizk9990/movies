@@ -208,19 +208,26 @@
                                                 });
                                             };
                                         </script>
-                                        
-										<h1 class="details__title"> Share Your Thoughts? </h1>
 
-										<form action="/home/movies/reviews/{{movie._id}}?_method=PUT" method = "post" class="form">
-											<input name = "reviewTitle" type="text" class="form__input" placeholder = "Review Title" required>
-											<textarea name = "reviewBody" class="form__textarea" required placeholder = "Write Review"></textarea>
-                                            <input required name = "reviewRating" type = "number" step = "any" max = "10.0" class="form__input" placeholder = "Rating (0.0 to 10.0)">
-											{{#if email}}
-												<button type = "submit" class="form__btn"> Send </button>
-												{{else}}
-													<button onclick = "window.location.href = '/signin';" class="form__btn sign-in-button"> Sign in to post </button>
-											{{/if}}
-										</form>
+										{{#if email }}
+											<h1 class="details__title"> Share Your Thoughts? </h1>
+
+											<form action="/home/movies/reviews/{{movie._id}}?_method=PUT" method = "post" class="form">
+												<input name = "reviewTitle" type="text" class="form__input" placeholder = "Review Title" required>
+												<textarea name = "reviewBody" class="form__textarea" required placeholder = "Write Review"></textarea>
+												<input required name = "reviewRating" type = "number" step = "any" max = "10.0" class="form__input" placeholder = "Rating (0.0 to 10.0)">
+												<button type = "submit" class="form__btn"> Send </button>	
+											</form>
+										{{else}}
+											<h1 class="details__title"> Sign In to Share Your Thoughts! </h1>
+
+											<form action = "/signin" method = "GET" class="form">
+												<input disabled = "disabled" class="form__input" placeholder = "Review Title">
+												<textarea disabled = "disabled" class="form__textarea" placeholder = "Write Review"></textarea>
+												<input disabled = "disabled" class="form__input" placeholder = "Rating (0.0 to 10.0)">
+												<button onclick = "window.location.href = '/signin';" class="form__btn sign-in-button"> Sign in to post </button>
+											</form>
+										{{/if}}
 									</div>
 								</div>
 								<!-- end comments -->

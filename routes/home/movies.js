@@ -38,7 +38,7 @@ router.get('/:id', (req, res) => {
             res.render('home/movie-details', { 
                 movie: data,
                 peopleAlsoSearch: fourMovies,
-                email: req.session.isUserSignedIn || req.session.isAuth? req.session.email: null,
+                email: req.session.isUserSignedIn || req.session.isAuth ? req.session.email: null,
             });
         }).catch( (error) => {
             res.render('errors/server', { exactError: error });
@@ -70,16 +70,27 @@ router.post('/search', (req, res) => {
 
 
 // if somebody requests for the movie using movie name
-router.get('/add-movie-request/:name', (req, res) => {
+router.get('/add-movie-request/:name', async (req, res) => {
+    let fName = 'Fallback';
+    let lName = 'Name';
+
+    const allUsers = await Users.find();
+    allUsers.map( (eachUser) => {
+        if (eachUser.email === req.session.email) {
+            fName = eachUser.firstName;
+            lName = eachUser.lastName;
+        }
+    });
+    
     Requests.findOne( { movieName: req.params.name } )
     .then( (movie) => {
         if (!movie) {
             let dataToSave = new Requests({
                 movieName: req.params.name,
                 requester: {
-                    firstName: 'Anonymous', 
-                    lastName: 'User', 
-                    email: 'anonymousUser@email.com'
+                    firstName: fName,
+                    lastName: lName,
+                    email: req.session.email
                 }
             });
             dataToSave.save()

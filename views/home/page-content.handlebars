@@ -17,7 +17,7 @@
                 <div style = "color: red; font-size: 24px;">
                     {{ requestedMovieRepeatedely }}
                 </div>  
-                <h1 class="home__title"><b> Top Favourite Movies </b> <span style = "font-size: 25px; color: pink">  </span> </h1>
+                <h1 class="home__title"><b> TOP FAVOURITE MOVIES </b> <span style = "font-size: 25px; color: pink">  </span> </h1>
                 <button class="home__nav home__nav--prev" type="button">
                     <i class="icon ion-ios-arrow-round-back"></i>
                 </button>
@@ -63,7 +63,7 @@
                     <!-- end content title -->
                     <!-- content tabs nav -->
                     <ul class="nav nav-tabs content__tabs" id = "content__tabs" role="tablist">
-                        <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="false"> Latest Reviews </a> </li>
+                        <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="false"> Latest Additions </a> </li>
                         {{#each genresData as |genreObject arrayIndex|}}
                             {{#generateHomeGenreNamesDynamicallyforNonMobile genreObject arrayIndex}} {{/generateHomeGenreNamesDynamicallyforNonMobile}}
                         {{/each}}
@@ -96,7 +96,7 @@
             
             {{!-- Latest reviews generated dynamically --}}
                 <div class="row">
-                    {{#generateHomeLatestReviews carouselData}} {{/generateHomeLatestReviews}}
+                    {{#generateHomeLatestReviews movies}} {{/generateHomeLatestReviews}}
                 </div>
             </div>
             

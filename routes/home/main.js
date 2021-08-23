@@ -26,7 +26,8 @@ router.get('/home/faq', (req, res) => {
     res.render('home/faq', { layout: false }); // Will add layout in some other way. This way gives me trouble
 });
 
-
+// Movies.find( {$where: function() { return (this.visibility == true) } } ).sort( {_id: -1} ).limit(4).lean() // oldest to newest
+        
 // homepage
 router.get('/home', (req, res) => {
     Movies.find( {$where: function() { return (this.visibility == true) }} ).lean()
