@@ -169,7 +169,7 @@
                                                     <div class = "div-2-{{_id}}">
                                                         <div class="comments__actions">
                                                             <div class="comments__rate show-server-response">
-                                                                <span style = "color: #ff55a5; font-size: 15px;">
+                                                                <span class = "div-2-{{_id}}span" style = "color: #ff55a5; font-size: 15px;">
 																	{{!-- We will add text here dynamically based on what server says --}}
 																</span>
                                                             </div>
@@ -203,7 +203,7 @@
                                                     url: `/home/movies/reviews/vote/${ voteValue }*${ reviewID }*{{ movie._id }}`, 
                                                     
                                                     success: (serverResponse) => {
-														$('.show-server-response span').text(serverResponse);
+														$('.div-2-'+reviewID+'span').text(serverResponse);
                                                     }
                                                 });
                                             };
