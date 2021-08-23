@@ -29,7 +29,6 @@ router.get('/', (req, res) => {
 // localhost:64000/home/movies/:id
 router.get('/:id', (req, res) => {
     let movieID = req.params.id;
-    let sessionEmail = req.session ? req.session.email : null;
 
     // fetching the movie by ID from the DB
     Movies.findOne({_id: ObjectID(movieID)}).lean()

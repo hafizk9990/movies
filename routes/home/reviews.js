@@ -19,7 +19,7 @@ router.all('/*', (req, res, next) => { // select everything that comes after thi
 
 router.put('/:id', async (req, res) => {
     const allUsers = await Users.find();
-    let thisUserName;
+    let thisUserName = 'Fallback Name';
 
     let today = new Date();
     let dd = String(today.getDate()).padStart(2, '0');
@@ -37,9 +37,11 @@ router.put('/:id', async (req, res) => {
     
     let reviewRating = (Math.floor(100 * req.body.reviewRating) / 100).toFixed(1); // restricting to 1 DP
 
-    allUsers.map( (eachUser) => 
-        eachUser.email === req.session.email ? thisUserName = eachUser.firstName + ' ' + eachUser.lastName: thisUserName = ''
-    );
+    allUsers.map( (eachUser) => {
+        if (eachUser.email === req.session.email) {
+            thisUserName = eachUser.firstName + ' ' + eachUser.lastName;
+        }
+    });
 
     let movieReview = {
         reviewTitle: req.body.reviewTitle,

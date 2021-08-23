@@ -42,7 +42,8 @@ router.get('/home', (req, res) => {
             res.render('home/page-content', {
             movies: allMovies,
             carouselData: topSevenMovies,
-            genresData: allGenres
+            genresData: allGenres,
+            email: req.session.email ? req.session.email : 'Not Signed In'
         })}).catch( (error) => {
             res.render('errors/server', { exactError: error });
         });
